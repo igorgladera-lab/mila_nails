@@ -1,0 +1,4487 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Mila Nails</title>
+
+<script>
+  (function(){
+    try{
+      var salvo = localStorage.getItem("mila_nails_tema");
+      var tema;
+      if(salvo === "dark" || salvo === "light"){
+        tema = salvo;
+      } else {
+        tema = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      document.documentElement.setAttribute("data-theme", tema);
+    }catch(e){}
+  })();
+</script>
+
+<meta name="theme-color" content="#7b1e3a">
+<meta name="mobile-web-app-capable" content="yes">
+
+<link rel="manifest" href="manifest.json">
+
+<link rel="icon" type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%237b1e3a'/%3E%3Ctext x='16' y='23' font-size='16' text-anchor='middle' fill='%23ffffff' font-family='Arial' font-weight='bold'%3EMN%3C/text%3E%3C/svg%3E">
+
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-title" content="Mila Nails">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<style>
+  :root{
+    --bg:#faf7f5;
+    --surface:#ffffff;
+    --primary:#7b1e3a;
+    --primary-dark:#5e1629;
+    --text:#2b2b2b;
+    --muted:#8a7f7a;
+    --border:#e8e2de;
+    --slot-empty:#e0e0e0;
+    --slot-filled:#ffffff;
+    --header-h:52px;
+    --controls-h:48px;
+    --vacation-bg:#fff8e1;
+    --vacation-stripe:#ffe0a3;
+    --busca-bg:#fff3e0;
+    --busca-borda:#f0a800;
+    --banner-bg:#fff0f5;
+    --banner-borda:#7b1e3a;
+
+    --folga-bg:#e3f2fd;
+    --folga-stripe:#90caf9;
+    --folga-text:#1565c0;
+
+    --feriado-bg:#fce4ec;
+    --feriado-stripe:#f48fb1;
+    --feriado-text:#ad1457;
+
+    --btn-bg:#f5efec;
+    --btn-active:#ece2dc;
+    --btn-secondary-bg:#f0eae7;
+    --btn-secondary-active:#e4dbd6;
+    --btn-danger-bg:#fdecec;
+    --btn-danger-active:#f9dcdc;
+
+    --item-bg:#faf7f5;
+    --item-active:#f0e8e4;
+
+    --input-bg:#ffffff;
+    --input-bg-alt:#faf7f5;
+
+    --duplo-bg:#e8f4fd;
+    --duplo-text:#1565c0;
+    --duplo-border:#cce0f5;
+    --duplo-surface:#f0f8ff;
+    --duplo-line:#90caf9;
+
+    --dom-bg:#e8f5e9;
+    --dom-text:#2e7d32;
+    --dom-border:#a5d6a7;
+    --dom-surface:#f1f8f2;
+    --dom-chip-ativo:#2e7d32;
+
+    --overlay-bg:rgba(0,0,0,.45);
+
+    --filtro-texto:#6b5200;
+    --filtro-limpar-texto:#8a6d00;
+    --filtro-limpar-active:#fff3d0;
+
+    --config-bg:#f5f0ea;
+    --config-border:#d8cec4;
+
+    --cfg-item-bg:#faf7f5;
+
+    --wa-bg:#e8f5e9;
+    --wa-text:#2e7d32;
+    --wa-border:#a5d6a7;
+  }
+
+  html[data-theme="dark"]{
+    --bg:#1a1a1a;
+    --surface:#262626;
+    --primary:#a02850;
+    --primary-dark:#7b1e3a;
+    --text:#e8e8e8;
+    --muted:#9a9a9a;
+    --border:#3a3a3a;
+    --slot-empty:#3a3a3a;
+    --slot-filled:#2e2e2e;
+    --vacation-bg:#3a3320;
+    --vacation-stripe:#5a5030;
+    --busca-bg:#3a2e18;
+    --busca-borda:#d99a00;
+    --banner-bg:#3a2028;
+    --banner-borda:#a02850;
+
+    --folga-bg:#1a2a3a;
+    --folga-stripe:#2a4a6a;
+    --folga-text:#90caf9;
+
+    --feriado-bg:#3a1e2a;
+    --feriado-stripe:#6a2a4a;
+    --feriado-text:#f48fb1;
+
+    --btn-bg:#333333;
+    --btn-active:#404040;
+    --btn-secondary-bg:#333333;
+    --btn-secondary-active:#404040;
+    --btn-danger-bg:#3a2020;
+    --btn-danger-active:#4a2828;
+
+    --item-bg:#2a2a2a;
+    --item-active:#353535;
+
+    --input-bg:#2a2a2a;
+    --input-bg-alt:#2a2a2a;
+
+    --duplo-bg:#1e3a5a;
+    --duplo-text:#90caf9;
+    --duplo-border:#2a4a6a;
+    --duplo-surface:#1e2e3e;
+    --duplo-line:#64b5f6;
+
+    --dom-bg:#1e3a20;
+    --dom-text:#81c784;
+    --dom-border:#2e5a30;
+    --dom-surface:#1e2e20;
+    --dom-chip-ativo:#2e7d32;
+
+    --overlay-bg:rgba(0,0,0,.7);
+
+    --filtro-texto:#f0d580;
+    --filtro-limpar-texto:#e0c060;
+    --filtro-limpar-active:#4a3a10;
+
+    --config-bg:#2a2620;
+    --config-border:#3a3528;
+
+    --cfg-item-bg:#2a2a2a;
+
+    --wa-bg:#1e3a20;
+    --wa-text:#81c784;
+    --wa-border:#2e5a30;
+  }
+
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+
+  html{
+    height:100%;
+    overflow:hidden;
+    overscroll-behavior:none;
+    -webkit-text-size-adjust:100%;
+  }
+
+  body{
+    margin:0;
+    padding:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    height:100%;
+    overflow:hidden;
+    position:fixed;
+    inset:0;
+    touch-action:manipulation;
+    transition:background .2s ease, color .2s ease;
+  }
+
+  header.app-header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:var(--header-h);
+    padding-top:env(safe-area-inset-top);
+    box-sizing:content-box;
+    background:var(--primary);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:18px;
+    letter-spacing:2px;
+    z-index:10;
+    box-shadow:0 1px 3px rgba(0,0,0,.15);
+  }
+
+  .controls{
+    position:fixed;
+    left:0;
+    right:0;
+    top:calc(var(--header-h) + env(safe-area-inset-top));
+    height:var(--controls-h);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:6px 10px;
+    background:var(--surface);
+    border-bottom:1px solid var(--border);
+    z-index:9;
+  }
+  .controls button{
+    border:none;
+    background:var(--btn-bg);
+    color:var(--primary);
+    font-size:15px;
+    font-weight:600;
+    border-radius:8px;
+    height:36px;
+    padding:0 12px;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    transition:background .15s;
+  }
+  .controls button:active{background:var(--btn-active);}
+  .controls .nav-btn{width:40px;padding:0;font-size:18px;}
+  .controls .month-label{
+    flex:1;
+    text-align:center;
+    font-weight:600;
+    font-size:15px;
+    color:var(--text);
+    text-transform:capitalize;
+  }
+  .controls .cfg-btn{
+    width:40px;
+    padding:0;
+    font-size:20px;
+    background:transparent;
+  }
+  .controls .cfg-btn:active{background:var(--btn-bg);}
+
+  .filtro-banner{
+    position:fixed;
+    left:0;
+    right:0;
+    top:calc(var(--header-h) + var(--controls-h) + env(safe-area-inset-top));
+    background:var(--busca-bg);
+    border-bottom:1px solid var(--busca-borda);
+    padding:8px 12px;
+    display:none;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    color:var(--filtro-texto);
+    z-index:8;
+    box-shadow:0 1px 3px rgba(0,0,0,.04);
+  }
+  .filtro-banner.show{ display:flex; }
+  .filtro-banner .fb-texto{
+    flex:1;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    font-weight:600;
+  }
+  .filtro-banner .fb-limpar{
+    border:none;
+    background:var(--surface);
+    border:1px solid var(--busca-borda);
+    color:var(--filtro-limpar-texto);
+    border-radius:14px;
+    font-size:12px;
+    font-weight:700;
+    padding:5px 10px;
+    cursor:pointer;
+    flex:0 0 auto;
+  }
+  .filtro-banner .fb-limpar:active{ background:var(--filtro-limpar-active); }
+
+  .calendar-wrap{
+    position:fixed;
+    left:0;
+    right:0;
+    top:calc(var(--header-h) + var(--controls-h) + env(safe-area-inset-top));
+    bottom:0;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    padding:0 4px 0;
+    touch-action:pan-y;
+    overscroll-behavior:contain;
+    transition:top .15s ease;
+  }
+  body.filtro-ativo .calendar-wrap{
+    top:calc(var(--header-h) + var(--controls-h) + 37px + env(safe-area-inset-top));
+  }
+
+  .banner-boas-vindas{
+    background:var(--banner-bg);
+    border:1px solid var(--banner-borda);
+    border-left:4px solid var(--banner-borda);
+    border-radius:10px;
+    padding:12px 14px;
+    margin:8px 4px 6px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:14px;
+    color:var(--text);
+    font-weight:600;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    animation:slideDownBanner .3s ease;
+    opacity:1;
+    transition:opacity .3s, transform .3s;
+  }
+  .banner-boas-vindas.saindo{
+    opacity:0;
+    transform:translateY(-8px);
+  }
+  @keyframes slideDownBanner{
+    from{ opacity:0; transform:translateY(-10px); }
+    to  { opacity:1; transform:translateY(0); }
+  }
+  .banner-boas-vindas .bb-icon{
+    font-size:22px;
+    flex:0 0 auto;
+    line-height:1;
+  }
+  .banner-boas-vindas .bb-texto{
+    flex:1;
+    line-height:1.35;
+  }
+  .banner-boas-vindas .bb-texto strong{
+    color:var(--primary);
+    font-weight:700;
+  }
+  html[data-theme="dark"] .banner-boas-vindas .bb-texto strong{
+    color:#ffb3c8;
+  }
+  .banner-boas-vindas .bb-fechar{
+    background:transparent;
+    border:none;
+    color:var(--text);
+    font-size:18px;
+    cursor:pointer;
+    padding:4px 6px;
+    line-height:1;
+    border-radius:50%;
+    opacity:.6;
+    flex:0 0 auto;
+    font-weight:700;
+  }
+  .banner-boas-vindas .bb-fechar:active{
+    opacity:1;
+    background:rgba(123,30,58,.08);
+  }
+
+  .weekdays{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:2px;
+    padding:6px 0 4px;
+    position:sticky;
+    top:0;
+    background:var(--bg);
+    z-index:5;
+  }
+  .weekdays div{
+    text-align:center;
+    font-size:11px;
+    font-weight:700;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.5px;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:2px;
+  }
+
+  .day{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:6px;
+    min-height:70px;
+    display:flex;
+    flex-direction:column;
+    padding:3px 4px 4px;
+    cursor:pointer;
+    overflow:hidden;
+    transition:background .15s, opacity .15s, border-color .15s;
+    position:relative;
+  }
+  .day:active{background:var(--item-active);}
+  .day.other-month{opacity:.4;}
+  .day.today{border:2px solid var(--primary);}
+
+  /* Férias */
+  .day.vacation{
+    background:
+      repeating-linear-gradient(
+        45deg,
+        var(--vacation-bg),
+        var(--vacation-bg) 6px,
+        var(--vacation-stripe) 6px,
+        var(--vacation-stripe) 12px
+      );
+  }
+  .day.vacation .day-number{ color:var(--muted); }
+  html[data-theme="dark"] .day.vacation .day-number{ color:#e0c060; }
+
+  /* Folga — dia todo (grade inteira) */
+  .day.folga-dia-todo{
+    background:
+      repeating-linear-gradient(
+        45deg,
+        var(--folga-bg),
+        var(--folga-bg) 6px,
+        var(--folga-stripe) 6px,
+        var(--folga-stripe) 12px
+      );
+  }
+  .day.folga-dia-todo .day-number{ color:var(--folga-text); }
+
+  /* Feriado */
+  .day.feriado{
+    background:var(--feriado-bg);
+    border-color:var(--feriado-stripe);
+  }
+  .day.feriado .day-number{ color:var(--feriado-text); }
+  .day.feriado.folga-dia-todo{
+    background:
+      repeating-linear-gradient(
+        45deg,
+        var(--feriado-bg),
+        var(--feriado-bg) 6px,
+        var(--feriado-stripe) 6px,
+        var(--feriado-stripe) 12px
+      );
+  }
+  .day.feriado.vacation{
+    background:
+      repeating-linear-gradient(
+        45deg,
+        var(--vacation-bg),
+        var(--vacation-bg) 6px,
+        var(--vacation-stripe) 6px,
+        var(--vacation-stripe) 12px
+      );
+    border-color:var(--feriado-stripe);
+  }
+
+  .vacation-icon{
+    position:absolute;
+    top:1px;
+    right:2px;
+    font-size:10px;
+    line-height:1;
+    pointer-events:none;
+    opacity:.85;
+  }
+
+  .day.destaque-busca{
+    background:var(--busca-bg);
+    border:2px solid var(--busca-borda);
+  }
+  .day.sem-match{ opacity:.22; }
+  .day.destaque-busca.sem-match{ opacity: 1; }
+
+  .day-number{
+    font-size:12px;
+    font-weight:700;
+    color:var(--text);
+    margin-bottom:2px;
+    line-height:1;
+  }
+  .day.today .day-number{color:var(--primary);}
+
+  .slot{
+    margin-top:2px;
+    border-radius:2px;
+    display:flex;
+    flex-direction:column;
+    gap:1px;
+    background:var(--slot-empty);
+    padding:1px;
+    min-height:7px;
+  }
+  .slot.has-items{
+    background:var(--slot-filled);
+    border:1px solid var(--border);
+  }
+
+  /* Folga por período — listra só o slot correspondente */
+  .slot.folga-manha,
+  .slot.folga-tarde{
+    background:
+      repeating-linear-gradient(
+        45deg,
+        var(--folga-bg),
+        var(--folga-bg) 6px,
+        var(--folga-stripe) 6px,
+        var(--folga-stripe) 12px
+      );
+  }
+
+  .slot-row{
+    display:flex;
+    gap:1px;
+    height:4px;
+    min-height:4px;
+  }
+  .slot-row .line{
+    flex:1;
+    height:100%;
+    min-width:2px;
+    border-radius:1px;
+  }
+  .slot-row.duplo{
+    height:8px;
+    min-height:8px;
+  }
+
+  .float-stack{
+    position:fixed;
+    bottom:calc(16px + env(safe-area-inset-bottom));
+    right:16px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    z-index:20;
+  }
+  .btn-float{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:var(--primary);
+    color:#fff;
+    border:none;
+    font-size:20px;
+    cursor:pointer;
+    box-shadow:0 3px 8px rgba(0,0,0,.25);
+    opacity:.65;
+    transition:opacity .15s, transform .15s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+    line-height:1;
+  }
+  .btn-float:active{
+    opacity:1;
+    transform:scale(.94);
+  }
+  .btn-float.ativo{
+    background:var(--busca-borda);
+    opacity:1;
+  }
+  .btn-float.wa{
+    background:var(--wa-text);
+  }
+  body.overlay-open .float-stack{
+    display:none;
+  }
+
+  .overlay{
+    position:fixed;
+    inset:0;
+    background:var(--overlay-bg);
+    display:none;
+    align-items:flex-end;
+    justify-content:center;
+    z-index:100;
+    padding-top:env(safe-area-inset-top);
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  .overlay.show{display:flex;}
+
+  .overlay.top{
+    align-items:flex-start;
+    padding-top:calc(env(safe-area-inset-top) + 12px);
+  }
+  .overlay.top .sheet{
+    border-radius:0 0 16px 16px;
+    max-height:60vh;
+    animation:slideDown .2s ease;
+  }
+  @keyframes slideDown{
+    from{transform:translateY(-20px);opacity:.6;}
+    to{transform:translateY(0);opacity:1;}
+  }
+
+  .sheet{
+    background:var(--surface);
+    width:100%;
+    max-width:520px;
+    max-height:88vh;
+    border-radius:16px 16px 0 0;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    animation:slideUp .2s ease;
+  }
+  @keyframes slideUp{
+    from{transform:translateY(20px);opacity:.6;}
+    to{transform:translateY(0);opacity:1;}
+  }
+
+  .sheet-header{
+    padding:14px 16px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex:0 0 auto;
+  }
+  .sheet-title{
+    font-size:16px;
+    font-weight:700;
+    color:var(--text);
+    text-transform:capitalize;
+  }
+  .sheet-close{
+    background:transparent;
+    border:none;
+    font-size:22px;
+    color:var(--muted);
+    cursor:pointer;
+    padding:0 4px;
+    line-height:1;
+  }
+
+  .sheet-body{
+    flex:1 1 auto;
+    overflow-y:auto;
+    padding:12px 16px;
+  }
+  .sheet-footer{
+    flex:0 0 auto;
+    padding:12px 16px;
+    border-top:1px solid var(--border);
+    display:flex;
+    gap:8px;
+  }
+
+  .cfg-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    padding:4px 0;
+  }
+  .cfg-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--cfg-item-bg);
+    padding:16px;
+    cursor:pointer;
+    transition:background .15s, border-color .15s;
+    text-align:left;
+  }
+  .cfg-item:active{
+    background:var(--item-active);
+    border-color:var(--primary);
+  }
+  .cfg-item .cfg-icon{
+    font-size:26px;
+    flex:0 0 auto;
+  }
+  .cfg-item .cfg-txt{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .cfg-item .cfg-titulo{
+    font-size:16px;
+    font-weight:600;
+    color:var(--text);
+  }
+  .cfg-item .cfg-sub{
+    font-size:12px;
+    font-weight:400;
+    color:var(--muted);
+  }
+  .cfg-item .cfg-seta{
+    font-size:18px;
+    color:var(--muted);
+    flex:0 0 auto;
+    opacity:.6;
+  }
+
+  /* Item de folga (opção) — estilo parecido com cfg-item */
+  .folga-opcao{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--cfg-item-bg);
+    padding:16px;
+    cursor:pointer;
+    transition:background .15s, border-color .15s;
+    text-align:left;
+    margin-bottom:10px;
+  }
+  .folga-opcao:active{
+    background:var(--item-active);
+    border-color:var(--primary);
+  }
+  .folga-opcao.ativo{
+    background:var(--folga-bg);
+    border-color:var(--folga-text);
+  }
+  .folga-opcao .folga-icon{
+    font-size:26px;
+    flex:0 0 auto;
+  }
+  .folga-opcao .folga-txt{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .folga-opcao .folga-titulo{
+    font-size:16px;
+    font-weight:600;
+    color:var(--text);
+  }
+  .folga-opcao.ativo .folga-titulo{
+    color:var(--folga-text);
+  }
+  .folga-opcao .folga-sub{
+    font-size:12px;
+    font-weight:400;
+    color:var(--muted);
+  }
+  .folga-opcao .folga-seta{
+    font-size:18px;
+    color:var(--muted);
+    flex:0 0 auto;
+    opacity:.6;
+  }
+  .folga-opcao .folga-check{
+    font-size:18px;
+    font-weight:700;
+    color:var(--folga-text);
+    flex:0 0 auto;
+    display:none;
+  }
+  .folga-opcao.ativo .folga-check{
+    display:block;
+  }
+
+  .busca-input-wrap{
+    position:relative;
+    display:flex;
+    align-items:center;
+    margin-bottom:10px;
+  }
+  .busca-input-wrap .busca-icon{
+    position:absolute;
+    left:12px;
+    color:var(--muted);
+    font-size:16px;
+    pointer-events:none;
+  }
+  .busca-input-wrap input[type="search"]{
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:12px 40px 12px 36px;
+    font-size:16px;
+    font-family:inherit;
+    background:var(--input-bg-alt);
+    color:var(--text);
+    outline:none;
+    -webkit-appearance:none;
+    appearance:none;
+  }
+  .busca-input-wrap input[type="search"]:focus{
+    border-color:var(--primary);
+    background:var(--input-bg);
+    box-shadow:0 0 0 3px rgba(123,30,58,.12);
+  }
+  html[data-theme="dark"] .busca-input-wrap input[type="search"]:focus{
+    box-shadow:0 0 0 3px rgba(160,40,80,.25);
+  }
+  .busca-input-wrap input[type="search"]::-webkit-search-cancel-button{
+    -webkit-appearance:none;
+    display:none;
+  }
+  .busca-input-wrap .btn-clear{
+    position:absolute;
+    right:8px;
+    border:none;
+    background:transparent;
+    color:var(--muted);
+    font-size:18px;
+    cursor:pointer;
+    padding:4px 8px;
+    line-height:1;
+    display:none;
+    border-radius:50%;
+  }
+  .busca-input-wrap .btn-clear.show{display:block;}
+
+  .busca-resultado{
+    text-align:center;
+    font-size:13px;
+    color:var(--muted);
+    padding:10px 8px;
+  }
+  .busca-resultado .num{
+    display:block;
+    font-size:26px;
+    font-weight:700;
+    color:var(--busca-borda);
+    margin-bottom:2px;
+  }
+
+  .feriado-banner{
+    background:var(--feriado-bg);
+    border:1px solid var(--feriado-stripe);
+    border-left:4px solid var(--feriado-text);
+    border-radius:8px;
+    padding:10px 12px;
+    margin-bottom:12px;
+    font-size:13px;
+    color:var(--feriado-text);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-weight:600;
+  }
+  .feriado-banner .fb-icon{
+    font-size:18px;
+    flex:0 0 auto;
+  }
+
+  .folga-banner{
+    background:var(--folga-bg);
+    border:1px solid var(--folga-stripe);
+    border-left:4px solid var(--folga-text);
+    border-radius:8px;
+    padding:10px 12px;
+    margin-bottom:12px;
+    font-size:13px;
+    color:var(--folga-text);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-weight:600;
+  }
+  .folga-banner .fb-icon{
+    font-size:18px;
+    flex:0 0 auto;
+  }
+
+  .chip-rodape{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border:2px solid var(--border);
+    border-radius:10px;
+    background:var(--surface);
+    padding:10px 14px;
+    font-size:14px;
+    font-weight:600;
+    color:var(--text);
+    cursor:pointer;
+    transition:all .15s ease;
+    user-select:none;
+    flex:0 0 auto;
+  }
+  .chip-rodape:active{
+    background:var(--item-bg);
+  }
+  .chip-rodape .chip-icon{
+    font-size:18px;
+    flex:0 0 auto;
+    line-height:1;
+  }
+  .chip-rodape .chip-check{
+    font-size:14px;
+    font-weight:700;
+    flex:0 0 auto;
+    opacity:0;
+    transition:opacity .15s;
+  }
+  .chip-rodape.ativo{
+    background:var(--folga-bg);
+    color:var(--folga-text);
+    border-color:var(--folga-text);
+  }
+  .chip-rodape.ativo .chip-check{
+    opacity:1;
+  }
+
+  .config-secao{
+    background:var(--config-bg);
+    border:1px solid var(--config-border);
+    border-radius:10px;
+    padding:14px;
+    margin-bottom:16px;
+  }
+  .config-secao .config-titulo{
+    font-size:11px;
+    font-weight:700;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    margin-bottom:12px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .config-linha{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:10px;
+  }
+  .config-linha:last-child{ margin-bottom:0; }
+  .config-linha label{
+    flex:1;
+    font-size:14px;
+    font-weight:600;
+    color:var(--text);
+  }
+  .config-linha .config-input-wrap{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    flex:0 0 auto;
+  }
+  .config-linha input[type="number"],
+  .config-linha input[type="text"]{
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:8px 10px;
+    font-size:15px;
+    font-family:inherit;
+    background:var(--input-bg);
+    color:var(--text);
+    outline:none;
+    text-align:right;
+  }
+  .config-linha input[type="text"]{
+    text-align:left;
+  }
+  .config-linha input[type="number"]{ width:90px; }
+  .config-linha input:focus{ border-color:var(--primary); }
+  .config-linha .config-sufixo{
+    font-size:14px;
+    font-weight:600;
+    color:var(--muted);
+    min-width:24px;
+  }
+
+  .backup-actions{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    padding:4px 0;
+  }
+  .backup-actions .btn-backup{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--item-bg);
+    padding:16px;
+    font-size:16px;
+    font-weight:600;
+    color:var(--text);
+    cursor:pointer;
+    transition:background .15s, border-color .15s;
+    text-align:left;
+  }
+  .backup-actions .btn-backup:active{
+    background:var(--item-active);
+    border-color:var(--primary);
+  }
+  .backup-actions .btn-backup .backup-icon{
+    font-size:26px;
+    flex:0 0 auto;
+  }
+  .backup-actions .btn-backup .backup-txt{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .backup-actions .btn-backup .backup-sub{
+    font-size:12px;
+    font-weight:400;
+    color:var(--muted);
+  }
+
+  .tema-toggle{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--item-bg);
+    padding:16px;
+    cursor:pointer;
+    margin-bottom:12px;
+    user-select:none;
+    transition:background .15s, border-color .15s;
+  }
+  .tema-toggle:active{
+    background:var(--item-active);
+  }
+  .tema-toggle .tema-icon{
+    font-size:26px;
+    flex:0 0 auto;
+    line-height:1;
+  }
+  .tema-toggle .tema-txt{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    text-align:left;
+  }
+  .tema-toggle .tema-titulo{
+    font-size:16px;
+    font-weight:600;
+    color:var(--text);
+  }
+  .tema-toggle .tema-sub{
+    font-size:12px;
+    font-weight:400;
+    color:var(--muted);
+  }
+  .tema-toggle .switch{
+    flex:0 0 auto;
+    width:48px;
+    height:28px;
+    border-radius:14px;
+    background:#ccc;
+    position:relative;
+    transition:background .2s;
+  }
+  html[data-theme="dark"] .tema-toggle .switch{
+    background:var(--primary);
+  }
+  .tema-toggle .switch::after{
+    content:"";
+    position:absolute;
+    top:2px;
+    left:2px;
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:0 1px 3px rgba(0,0,0,.25);
+    transition:transform .2s;
+  }
+  html[data-theme="dark"] .tema-toggle .switch::after{
+    transform:translateX(20px);
+  }
+
+  .vacation-banner{
+    background:var(--vacation-bg);
+    border:1px solid var(--vacation-stripe);
+    border-left:4px solid #f0a800;
+    border-radius:8px;
+    padding:10px 12px;
+    margin-bottom:12px;
+    font-size:13px;
+    color:var(--text);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .vacation-banner .vb-text{flex:1;}
+  .vacation-banner button{
+    background:var(--surface);
+    border:1px solid var(--vacation-stripe);
+    color:var(--text);
+    border-radius:6px;
+    font-size:11px;
+    font-weight:700;
+    padding:6px 8px;
+    cursor:pointer;
+  }
+  .vacation-banner button:active{background:var(--vacation-stripe);}
+
+  .vacation-list-item{
+    background:var(--vacation-bg);
+    border:1px solid var(--vacation-stripe);
+    border-radius:8px;
+    padding:10px 12px;
+    margin-bottom:8px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .vacation-list-item .vl-info{flex:1;}
+  .vacation-list-item .vl-title{
+    font-size:14px;
+    font-weight:600;
+    color:var(--text);
+  }
+  .vacation-list-item .vl-sub{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:2px;
+  }
+
+  .ag-item{
+    background:var(--item-bg);
+    border-left:5px solid var(--primary);
+    border-radius:6px;
+    padding:10px 12px;
+    margin-bottom:8px;
+    cursor:pointer;
+    position:relative;
+  }
+  .ag-item:active{background:var(--item-active);}
+  .ag-item .ag-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:8px;
+    margin-bottom:2px;
+  }
+  .ag-item .ag-hora{
+    font-size:15px;
+    font-weight:700;
+    color:var(--primary);
+  }
+  .ag-item .ag-cliente{
+    font-size:14px;
+    font-weight:600;
+    flex:1;
+    text-align:right;
+    color:var(--text);
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .ag-item .ag-tipo{
+    font-size:12px;
+    color:var(--muted);
+  }
+  .ag-item .ag-badge{
+    display:inline-block;
+    font-size:10px;
+    font-weight:700;
+    padding:2px 6px;
+    border-radius:8px;
+    background:var(--banner-bg);
+    color:var(--primary);
+    margin-top:4px;
+  }
+  html[data-theme="dark"] .ag-item .ag-badge{
+    color:#ffb3c8;
+  }
+  .ag-item .ag-badge.duplo{
+    background:var(--duplo-bg);
+    color:var(--duplo-text);
+  }
+  .ag-item .ag-badge.domicilio{
+    background:var(--dom-bg);
+    color:var(--dom-text);
+  }
+  .ag-item .ag-preco-linha{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:4px;
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+  }
+  .ag-item .ag-preco-linha .ag-preco-label{
+    font-weight:500;
+  }
+  .ag-item .ag-preco-linha .ag-preco-valor{
+    font-weight:700;
+    color:var(--dom-text);
+  }
+  .ag-item .ag-preco-total{
+    margin-top:2px;
+    font-size:13px;
+    font-weight:700;
+    color:var(--text);
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+  }
+  .ag-item .ag-obs{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:4px;
+    font-style:italic;
+  }
+
+  .ag-item .ag-cliente2-bloco{
+    margin-top:6px;
+    padding-top:6px;
+    border-top:1px dashed var(--border);
+  }
+  .ag-item .ag-cliente2-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:8px;
+    margin-bottom:2px;
+  }
+  .ag-item .ag-hora2{
+    font-size:14px;
+    font-weight:700;
+    color:var(--duplo-text);
+  }
+  .ag-item .ag-cliente2{
+    font-size:13px;
+    font-weight:600;
+    color:var(--duplo-text);
+    flex:1;
+    text-align:right;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .ag-item .ag-tipo2{
+    font-size:12px;
+    color:var(--muted);
+  }
+
+  .empty-msg{
+    text-align:center;
+    color:var(--muted);
+    padding:24px 8px;
+    font-size:14px;
+  }
+
+  .btn{
+    border:none;
+    border-radius:8px;
+    font-size:15px;
+    font-weight:600;
+    padding:12px 16px;
+    cursor:pointer;
+    transition:background .15s;
+    flex:1;
+  }
+  .btn-primary{ background:var(--primary); color:#fff; }
+  .btn-primary:active{ background:var(--primary-dark); }
+  .btn-primary:disabled{ opacity:.5; cursor:not-allowed; }
+  .btn-secondary{ background:var(--btn-secondary-bg); color:var(--text); }
+  .btn-secondary:active{ background:var(--btn-secondary-active); }
+  .btn-danger{ background:var(--btn-danger-bg); color:#c62828; }
+  html[data-theme="dark"] .btn-danger{ color:#ff8080; }
+  .btn-danger:active{ background:var(--btn-danger-active); }
+  .btn-vacation{
+    background:#f0a800;
+    color:#fff;
+    flex:0 0 auto;
+    padding:12px 14px;
+  }
+  .btn-vacation:active{ background:#d99400; }
+
+  .form-group{ margin-bottom:14px; }
+  .form-group label{
+    display:block;
+    font-size:12px;
+    font-weight:600;
+    color:var(--muted);
+    margin-bottom:4px;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea{
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:10px 12px;
+    font-size:16px;
+    font-family:inherit;
+    background:var(--input-bg);
+    color:var(--text);
+    outline:none;
+    transition:border .15s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus{ border-color:var(--primary); }
+  .form-group textarea{ resize:vertical; min-height:60px; }
+  .form-group input:disabled,
+  .form-group select:disabled{
+    opacity:.55;
+    cursor:not-allowed;
+  }
+
+  .check-group{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--duplo-surface);
+    border:1px solid var(--duplo-border);
+    border-radius:8px;
+    padding:12px;
+    margin-bottom:14px;
+    cursor:pointer;
+    user-select:none;
+  }
+  .check-group input[type="checkbox"]{
+    width:22px;
+    height:22px;
+    accent-color:var(--primary);
+    cursor:pointer;
+    flex:0 0 auto;
+  }
+  .check-group .check-label{
+    font-size:13px;
+    font-weight:600;
+    color:var(--duplo-text);
+    line-height:1.3;
+  }
+  .check-group .check-sub{
+    font-size:11px;
+    color:var(--muted);
+    font-weight:400;
+    display:block;
+    margin-top:2px;
+  }
+  .check-group.desabilitado{
+    opacity:.4;
+    cursor:not-allowed;
+    pointer-events:none;
+  }
+
+  .chip-domicilio{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    width:100%;
+    border:2px solid var(--border);
+    border-radius:10px;
+    background:var(--surface);
+    padding:12px 14px;
+    font-size:15px;
+    font-weight:600;
+    color:var(--text);
+    cursor:pointer;
+    transition:all .15s ease;
+    margin-bottom:14px;
+    user-select:none;
+  }
+  .chip-domicilio:active{
+    background:var(--item-bg);
+  }
+  .chip-domicilio .chip-icon{
+    font-size:20px;
+    flex:0 0 auto;
+    line-height:1;
+  }
+  .chip-domicilio .chip-texto{
+    flex:1;
+    text-align:left;
+    line-height:1.3;
+  }
+  .chip-domicilio .chip-check{
+    font-size:18px;
+    font-weight:700;
+    flex:0 0 auto;
+    opacity:0;
+    transition:opacity .15s;
+  }
+  .chip-domicilio.ativo{
+    background:var(--dom-chip-ativo);
+    color:#fff;
+    border-color:var(--dom-chip-ativo);
+  }
+  .chip-domicilio.ativo .chip-check{
+    opacity:1;
+  }
+  .chip-domicilio .chip-info{
+    display:none;
+    font-size:12px;
+    font-weight:500;
+    opacity:.85;
+    margin-top:2px;
+  }
+  .chip-domicilio.ativo .chip-info{
+    display:block;
+  }
+
+  .cliente2-bloco{
+    display:none;
+    background:var(--duplo-surface);
+    border:1px solid var(--duplo-border);
+    border-left:4px solid var(--duplo-text);
+    border-radius:10px;
+    padding:12px 12px 4px;
+    margin-bottom:14px;
+  }
+  .cliente2-bloco.show{ display:block; }
+  .cliente2-titulo{
+    font-size:12px;
+    font-weight:700;
+    color:var(--duplo-text);
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .cliente2-horario{
+    font-size:11px;
+    font-weight:600;
+    color:var(--duplo-text);
+    background:var(--surface);
+    border:1px solid var(--duplo-border);
+    border-radius:12px;
+    padding:2px 8px;
+    margin-left:auto;
+    text-transform:none;
+  }
+  .cliente2-horario.vazio{
+    background:transparent;
+    border-color:transparent;
+    color:transparent;
+  }
+  .cliente2-bloco .form-group{ margin-bottom:10px; }
+  .cliente2-bloco .form-group label{ color:var(--duplo-text); }
+
+  .color-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:8px;
+    margin-top:6px;
+  }
+  .color-swatch{
+    aspect-ratio:1;
+    border-radius:8px;
+    border:2px solid transparent;
+    cursor:pointer;
+    position:relative;
+  }
+  .color-swatch.selected{
+    border-color:var(--text);
+    box-shadow:0 0 0 2px var(--surface) inset;
+  }
+  .color-swatch.custom{
+    background:linear-gradient(135deg,#e57373,#f06292,#ba68c8,#64b5f6,#4db6ac,#ffb74d);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:18px;
+    font-weight:700;
+  }
+
+  .tipo-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px;
+    background:var(--item-bg);
+    border-radius:8px;
+    margin-bottom:8px;
+    cursor:pointer;
+    border:1px solid var(--border);
+  }
+  .tipo-item:active{background:var(--item-active);}
+  .tipo-cor{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    flex:0 0 auto;
+    border:2px solid var(--surface);
+    box-shadow:0 0 0 1px var(--border);
+  }
+  .tipo-info{flex:1;min-width:0;}
+  .tipo-nome{
+    font-size:15px;
+    font-weight:600;
+    color:var(--text);
+  }
+  .tipo-meta{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:2px;
+  }
+
+  .feriado-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px;
+    background:var(--item-bg);
+    border-radius:8px;
+    margin-bottom:8px;
+    cursor:pointer;
+    border:1px solid var(--border);
+  }
+  .feriado-item:active{background:var(--item-active);}
+  .feriado-cor{
+    width:36px;
+    height:36px;
+    border-radius:8px;
+    flex:0 0 auto;
+    background:var(--feriado-bg);
+    border:1px solid var(--feriado-stripe);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:16px;
+    color:var(--feriado-text);
+    font-weight:700;
+  }
+  .feriado-info{flex:1;min-width:0;}
+  .feriado-nome{
+    font-size:15px;
+    font-weight:600;
+    color:var(--text);
+  }
+  .feriado-meta{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:2px;
+  }
+
+  .month-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin-bottom:16px;
+  }
+  .month-btn{
+    padding:14px 6px;
+    border:1px solid var(--border);
+    background:var(--surface);
+    border-radius:8px;
+    font-size:14px;
+    font-weight:600;
+    color:var(--text);
+    cursor:pointer;
+    text-transform:capitalize;
+    transition:background .15s;
+  }
+  .month-btn:active{background:var(--btn-bg);}
+  .month-btn.current{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+  }
+  .year-selector{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    margin-bottom:12px;
+  }
+  .year-selector button{
+    border:none;
+    background:var(--btn-bg);
+    color:var(--primary);
+    font-size:18px;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    cursor:pointer;
+    font-weight:700;
+  }
+  .year-selector .year-label{
+    font-size:18px;
+    font-weight:700;
+    color:var(--text);
+    min-width:70px;
+    text-align:center;
+  }
+
+  .ag-tipo-dot{
+    display:inline-block;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    margin-right:6px;
+    vertical-align:middle;
+    background:var(--muted);
+  }
+
+  .sheet-footer.multi{
+    flex-wrap:wrap;
+  }
+
+  .wa-status-box{
+    background:var(--wa-bg);
+    border:1px solid var(--wa-border);
+    border-radius:8px;
+    padding:10px 12px;
+    margin-bottom:12px;
+    font-size:13px;
+    color:var(--wa-text);
+    font-weight:600;
+  }
+
+  .wa-resultado-item{
+    padding:6px 0;
+    border-bottom:1px solid var(--border);
+    font-size:12px;
+  }
+  .wa-resultado-item:last-child{ border-bottom:none; }
+
+  ::-webkit-scrollbar{width:0;height:0;}
+</style>
+</head>
+<body>
+
+<header class="app-header">MILA NAILS</header>
+
+<div class="controls">
+  <button class="nav-btn" id="btnPrev" aria-label="Mês anterior">◀</button>
+  <button class="nav-btn" id="btnMonthPicker" aria-label="Selecionar mês">📅</button>
+  <div class="month-label" id="monthLabel">—</div>
+  <button class="cfg-btn" id="btnConfig" aria-label="Configurações" title="Configurações">⚙️</button>
+  <button class="nav-btn" id="btnNext" aria-label="Próximo mês">▶</button>
+</div>
+
+<div class="filtro-banner" id="filtroBanner">
+  <span class="fb-texto" id="filtroTexto">—</span>
+  <button class="fb-limpar" id="btnLimparFiltro" type="button">✕ Limpar</button>
+</div>
+
+<div class="calendar-wrap" id="calendarWrap">
+  <div id="bannerWrap"></div>
+
+  <div class="weekdays">
+    <div>Dom</div><div>Seg</div><div>Ter</div><div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div>
+  </div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="float-stack">
+  <button class="btn-float wa" id="btnWhatsappFloat" aria-label="Lembretes WhatsApp" title="Lembretes WhatsApp" style="display:none;">📲</button>
+  <button class="btn-float" id="btnBuscaFloat" aria-label="Buscar cliente" title="Buscar cliente">🔍</button>
+  <button class="btn-float" id="btnBackupFloat" aria-label="Backup" title="Backup">💾</button>
+</div>
+
+<!-- OVERLAY: MODAL DE BUSCA -->
+<div class="overlay top" id="overlayBusca">
+  <div class="sheet">
+    <div class="sheet-header">
+      <div class="sheet-title">Buscar cliente</div>
+      <button class="sheet-close" data-close="overlayBusca">✕</button>
+    </div>
+    <div class="sheet-body">
+      <div class="busca-input-wrap">
+        <span class="busca-icon">🔍</span>
+        <input type="search" id="buscaCliente" placeholder="Digite o nome do cliente..." autocomplete="off">
+        <button class="btn-clear" id="btnLimparBusca" type="button" aria-label="Limpar">✕</button>
+      </div>
+      <div class="busca-resultado" id="buscaResultado">
+        Digite para filtrar
+      </div>
+    </div>
+    <div class="sheet-footer">
+      <button class="btn btn-primary" id="btnOkBusca">OK</button>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: MODAL DO DIA -->
+<div class="overlay" id="overlayDay">
+  <div class="sheet">
+    <div class="sheet-header">
+      <div class="sheet-title" id="dayTitle">—</div>
+      <button class="sheet-close" data-close="overlayDay">✕</button>
+    </div>
+    <div class="sheet-body" id="dayBody"></div>
+    <div class="sheet-footer multi">
+      <div class="chip-rodape" id="chipFolga" role="button" tabindex="0" title="Marcar folga">
+        <span class="chip-icon">🛌</span>
+        <span>Folga</span>
+        <span class="chip-check">✓</span>
+      </div>
+      <button class="btn btn-vacation" id="btnVacation" title="Marcar férias">🏖️ Férias</button>
+      <button class="btn btn-primary" id="btnAddAg">+ Adicionar</button>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: ESCOLHA DE FOLGA (Dia todo / Período) -->
+<div class="overlay" id="overlayFolga">
+  <div class="sheet">
+    <div class="sheet-header">
+      <div class="sheet-title">Folga 🛌</div>
+      <button class="sheet-close" data-close="overlayFolga">✕</button>
+    </div>
+    <div class="sheet-body">
+      <div class="folga-opcao" id="folgaOpDiaTodo" role="button" tabindex="0">
+        <span class="folga-icon">🛌</span>
+        <span class="folga-txt">
+          <span class="folga-titulo">Dia todo</span>
+          <span class="folga-sub">Marca manhã e tarde de uma vez</span>
+        </span>
+        <span class="folga-check">✓</span>
+      </div>
+
+      <div class="folga-opcao" id="folgaOpPeriodo" role="button" tabindex="0">
+        <span class="folga-icon">📅</span>
+        <span class="folga-txt">
+          <span class="folga-titulo">Período...</span>
+          <span class="folga-sub">Escolher manhã ou tarde separadamente</span>
+        </span>
+        <span class="folga-seta">▶</span>
+      </div>
+    </div>
+    <div class="sheet-footer">
+      <button class="btn btn-secondary" data-close="overlayFolga">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: ESCOLHA DE PERÍODO (Manhã / Tarde) -->
+<div class="overlay" id="overlayFolgaPeriodo">
+  <div class="sheet">
+    <div class="sheet-header">
+      <div class="sheet-title">Folga · Período</div>
+      <button class="sheet-close" data-close="overlayFolgaPeriodo">✕</button>
+    </div>
+    <div class="sheet-body">
+      <div class="folga-opcao" id="folgaOpManha" role="button" tabindex="0">
+        <span class="folga-icon">☀️</span>
+        <span class="folga-txt">
+          <span class="folga-titulo">Manhã</span>
+          <span class="folga-sub">Folga no período da manhã</span>
+        </span>
+        <span class="folga-check">✓</span>
+      </div>
+
+      <div class="folga-opcao" id="folgaOpTarde" role="button" tabindex="0">
+        <span class="folga-icon">🌙</span>
+        <span class="folga-txt">
+          <span class="folga-titulo">Tarde</span>
+          <span class="folga-sub">Folga no período da tarde</span>
+        </span>
+        <span class="folga-check">✓</span>
+      </div>
+    </div>
+    <div class="sheet-footer">
+      <button class="btn btn-secondary" id="btnVoltarFolga">Voltar</button>
+      <button class="btn btn-danger" id="btnLimparFolga">Limpar</button>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: FORM AGENDAMENTO -->
+<div class="overlay" id="overlayAg">
+  <div class="sheet">
+    <div class="sheet-header">
+      <div class="sheet-title" id="agTitle">Novo agendamento</div>
+      <button class="sheet-close" data-close="overlayAg">✕</button>
+    </div>
+    <div class="sheet-body">
+      <div class="form-group">
+        <label for="agHora">Horário</label>
+        <select id="agHora">
+          <option value="">— Sem horário —</option>
+        </select>
+      </div>
+
+      <label class="check-group" id="checkDuploWrap" for="agDuplo">
+        <input type="checkbox" id="agDuplo">
+        <span class="check-label">
+          👥 Duas clientes juntas
+          <span class="check-sub">O segundo procedimento começa quando o primeiro termina</span>
+        </span>
+      </label>
+
+      <div class="form-group">
+        <label for="agCliente">Cliente</label>
+        <input type="text" id="agCliente" placeholder="Nome da cliente">
+      </div>
+      <div class="form-group">
+        <label for="agTelefone">Telefone</label>
+        <input type="tel" id="agTelefone" placeholder="(00) 00000-0000">
+      </div>
+      <div class="form-group">
+        <label for="agTipo">Tipo de serviço</label>
+        <select id="agTipo"></select>
+      </div>
+      <div class="form-group">
+        <label for="agDuracao">Duração (min)</label>
+        <input type="number" id="agDuracao" placeholder="60" min="0" step="5">
+      </div>
+
+      <div class="chip-domicilio" id="chipDomicilio" role="button" tabindex="0">
+        <span class="chip-icon">🏠</span>
+        <span class="chip-texto">
+          Atendimento a domicílio
+          <span class="chip-info" id="chipDomicilioInfo"></span>
+        </span>
+        <span class="chip-check">✓</span>
+      </div>
+
+      <div class="form-group">
+        <label for="agObs">Observação</label>
+        <textarea id="agObs" placeholder="Observações..."></textarea>
+      </div>
+
+      <div class="cliente2-bloco" id="cliente2Bloco">
+        <div class="cliente2-titulo">
+          👥 Segunda cliente
+          <span class="cliente2-horario" id="cliente2Horario">—</span>
+        </div>
+
+        <div class="form-group">
+          <label for="agCliente2">Nome da cliente 2</label>
+          <input type="text" id="agCliente2" placeholder="Nome da segunda cliente">
+        </div>
+        <div class="form-group">
+          <label for="agTipo2">Tipo de serviço</label>
+          <select id="agTipo2"></select>
+        </div>
+        <div class="form-group">
+          <label for="agDuracao2">Duração (min)</label>
+          <input type="number" id="agDuracao2" placeholder="60" min="0" step="5">
+        </div>
+      </div>
+
+    </div>
+    <div class="sheet-footer">
+      <button class="btn btn-danger" id="btnDeleteAg" style="display:none;">Excluir</button>
+      <button class="btn btn-secondary" data-close="overlayAg">Cancelar</button>
+      <button class="btn btn-primary" id="btnSaveAg">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: CONFIGURAÇÕES -->
+<div class="overlay" id="overlayConfig">
+  <div class="sheet">
+    <div class="sheet-header">
+      <div class="sheet-title">Configurações</div>
+      <button class="sheet-close" data-close="overlayConfig">✕</button>
+    </div>
+    <div class="sheet-body">
+      <div class="cfg-list">
+        <button class="cfg-item" id="cfgBtnTipos">
+          <span class="cfg-icon">🎨</span>
+          <span class="cfg-txt">
+            <span class="cfg-titulo">Tipos de serviço</span>
+            <span class="cfg-sub">Cadastrar tipos, cores, preços e durações</span>
+          </span>
+          <span class="cfg-seta">▶</span>
+        </button>
+
+        <button class="cfg-item" id="cfgBtnFeriados">
+          <span class="cfg-icon">🎉</span>
+          <span class="cfg-txt">
+            <span class="cfg-titulo">Feriados</span>
+            <span class="cfg-sub">Cadastrar feriados municipal e estadual</span>
+          </span>
+          <span class="cfg-seta">▶</span>
+        </button>
+
+        <button class="cfg-item" id="cfgBtnDomicilio">
+          <span class="cfg-icon">🏠</span>
+          <span class="cfg-txt">
+            <span class="cfg-titulo">Domicílio</span>
+            <span class="cfg-sub">Taxa e duração do atendimento a domicílio</span>
+          </span>
+          <span class="cfg-seta">▶</span>
+        </button>
+
+        <button class="cfg-item" id="cfgBtnWhatsapp">
+          <span class="cfg-icon">📲</span>
+          <span class="cfg-txt">
+            <span class="cfg-titulo">WhatsApp</span>
+            <span class="cfg-sub">Enviar lembretes de agendamento</span>
+          </span>
+          <span class="cfg-seta">▶</span>
+        </button>
+      </div>
+    </div>
+    <div class="sheet-footer">
+      <button class="btn btn-secondary" data-close="overlayConfig">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: TIPOS -->
+<div class="overlay" id="overlayTipos">
+  <div class="sheet">
+    <div class="sheet-header">
+      <div class="sheet-title">Tipos de serviço</div>
+      <button class="sheet-close" data-close="overlayTipos">✕</button>
+    </div>
+    <div class="sheet-body">
+      <div id="tiposBody"></div>
+    </div>
+    <div class="sheet-footer">
+      <button class="btn btn-primary" id="btnAddTipo">+ Novo tipo</button>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: FORM TIPO -->
+<div class="overlay" id="overlayTipo">
+  <div class="sheet">
+    <div class="sheet-header">
+      <div class="sheet-title" id="tipoTitle">Novo tipo</div>
+      <button class="sheet-close" data-close="overlayTipo">✕</button>
+    </div>
+    <div class="sheet-body">
+      <div class="form-group">
+        <label for="tipoNome">Nome</label>
+        <input type="text" id="tipoNome" placeholder="Ex: Mão simples">
+      </div>
+      <div class="form-group">
+        <label for="tipoPreco">Preço (R$)</label>
+        <input type="number" id="tipoPreco" placeholder="0,00" step="0.01" min="0">
+      </div>
+      <div class="form-group">
+        <label for="tipoDuracao">Duração (min)</label>
+        <input type="number" id="tipoDuracao" placeholder="60" min="0" step="5">
+      </div>
+      <div class="form-group">
+        <label>Cor</label>
+        <div class="color-grid" id="colorGrid"></div>
+      </div>
+    </div>
+    <div class="sheet-footer">
+      <button class="btn btn-danger" id="btnDeleteTipo" style="display:none;">Excluir</button>
+      <button class="btn btn-secondary" data-close="overlayTipo">Cancelar</button>
+      <button class="btn btn-primary" id="btnSaveTipo">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: CONFIG DOMICÍLIO -->
+<div class="overlay" id="overlayDomicilio">
+  <div class="sheet">
+    <div class="sheet-header">
+      <div class="sheet-title">Configuração de domicílio</div>
+      <button class="sheet-close" data-close="overlayDomicilio">✕</button>
+    </div>
+    <div class="sheet-body">
+      <div class="config-secao">
+        <div class="config-titulo">⚙️ Parâmetros</div>
+        <div class="config-linha">
+          <label for="cfgTaxaDomicilio">Taxa de domicílio</label>
+          <div class="config-input-wrap">
+            <span class="config-sufixo">R$</span>
+            <input type="number" id="cfgTaxaDomicilio" min="0" step="0.01" placeholder="20,00">
+          </div>
+        </div>
+        <div class="config-linha">
+          <label for="cfgDuracaoDomicilio">Duração</label>
+          <div class="config-input-wrap">
+            <input type="number" id="cfgDuracaoDomicilio" min="0" step="15" placeholder="150">
+            <span class="config-sufixo">min</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sheet-footer">
+      <button class="btn btn-secondary" data-close="overlayDomicilio">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: CONFIG WHATSAPP -->
+<div class="overlay" id="overlayWhatsapp">
+  <div class="sheet">
+    <div class="sheet-header">
+      <div class="sheet-title">WhatsApp</div>
+      <button class="sheet-close" data-close="overlayWhatsapp">✕</button>
+    </div>
+    <div class="sheet-body">
+
+      <div class="config-secao">
+        <div class="config-titulo">⚙️ Conexão</div>
+
+        <div class="form-group">
+          <label for="waBackendUrl">URL do backend</label>
+          <input type="url" id="waBackendUrl" placeholder="https://mila-nails-backend.onrender.com" autocomplete="off">
+        </div>
+
+        <div class="form-group">
+          <label for="waApiKey">API Key</label>
+          <input type="password" id="waApiKey" placeholder="mila_nails_sk_..." autocomplete="off">
+        </div>
+
+        <label class="check-group" for="waAtivo" id="waAtivoWrap">
+          <input type="checkbox" id="waAtivo">
+          <span class="check-label">
+            ✅ Ativar lembretes
+            <span class="check-sub">Mostra o botão 📲 na tela principal</span>
+          </span>
+        </label>
+      </div>
+
+      <div class="config-secao">
+        <div class="config-titulo">📝 Template</div>
+        <div class="config-linha">
+          <label for="waTemplateName">Nome do template</label>
+          <div class="config-input-wrap">
+            <input type="text" id="waTemplateName" placeholder="confirmacao_agendamento" style="width:220px;">
+          </div>
+        </div>
+        <div class="config-linha">
+          <label for="waLanguageCode">Idioma</label>
+          <div class="config-input-wrap">
+            <input type="text" id="waLanguageCode" placeholder="pt_BR" style="width:90px;">
+          </div>
+        </div>
+      </div>
+
+      <div id="waStatus" class="busca-resultado" style="padding:8px;"></div>
+
+    </div>
+    <div class="sheet-footer">
+      <button class="btn btn-secondary" data-close="overlayWhatsapp">Fechar</button>
+      <button class="btn btn-primary" id="btnWaSalvar">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: LEMBRETES WHATSAPP -->
+<div class="overlay" id="overlayLembretes">
+  <div class="sheet">
+    <div class="sheet-header">
+      <div class="sheet-title" id="lembretesTitle">Lembretes de amanhã</div>
+      <button class="sheet-close" data-close="overlayLembretes">✕</button>
+    </div>
+    <div class="sheet-body">
+      <div id="lembretesBody"></div>
+      <div id="lembretesResultado"></div>
+    </div>
+    <div class="sheet-footer">
+      <button class="btn btn-secondary" data-close="overlayLembretes">Fechar</button>
+      <button class="btn btn-primary" id="btnEnviarLembretes">📲 Enviar lembretes</button>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: FERIADOS -->
+<div class="overlay" id="overlayFeriados">
+  <div class="sheet">
+    <div class="sheet-header">
+      <div class="sheet-title">Feriados</div>
+      <button class="sheet-close" data-close="overlayFeriados">✕</button>
+    </div>
+    <div class="sheet-body">
+      <div class="config-secao" style="margin-bottom:12px;">
+        <div class="config-titulo">🇧🇷 Feriados nacionais</div>
+        <div id="feriadosNacionaisBody" style="font-size:12px;color:var(--muted);"></div>
+      </div>
+      <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin:12px 0 6px;">🎉 Municipal / Estadual</div>
+      <div id="feriadosBody"></div>
+    </div>
+    <div class="sheet-footer">
+      <button class="btn btn-primary" id="btnAddFeriado">+ Novo feriado</button>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: FORM FERIADO -->
+<div class="overlay" id="overlayFeriado">
+  <div class="sheet">
+    <div class="sheet-header">
+      <div class="sheet-title" id="feriadoTitle">Novo feriado</div>
+      <button class="sheet-close" data-close="overlayFeriado">✕</button>
+    </div>
+    <div class="sheet-body">
+      <div class="form-group">
+        <label for="feriadoNome">Nome do feriado</label>
+        <input type="text" id="feriadoNome" placeholder="Ex: Aniversário da cidade">
+      </div>
+      <div class="form-group">
+        <label for="feriadoDia">Dia</label>
+        <input type="number" id="feriadoDia" placeholder="15" min="1" max="31">
+      </div>
+      <div class="form-group">
+        <label for="feriadoMes">Mês</label>
+        <select id="feriadoMes">
+          <option value="1">Janeiro</option>
+          <option value="2">Fevereiro</option>
+          <option value="3">Março</option>
+          <option value="4">Abril</option>
+          <option value="5">Maio</option>
+          <option value="6">Junho</option>
+          <option value="7">Julho</option>
+          <option value="8">Agosto</option>
+          <option value="9">Setembro</option>
+          <option value="10">Outubro</option>
+          <option value="11">Novembro</option>
+          <option value="12">Dezembro</option>
+        </select>
+      </div>
+      <label class="check-group" for="feriadoAnual">
+        <input type="checkbox" id="feriadoAnual">
+        <span class="check-label">
+          🗓️ Feriado anual (repete todo ano)
+          <span class="check-sub">Se desmarcado, vale apenas para o ano atual</span>
+        </span>
+      </label>
+    </div>
+    <div class="sheet-footer">
+      <button class="btn btn-danger" id="btnDeleteFeriado" style="display:none;">Excluir</button>
+      <button class="btn btn-secondary" data-close="overlayFeriado">Cancelar</button>
+      <button class="btn btn-primary" id="btnSaveFeriado">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: SELETOR DE MÊS -->
+<div class="overlay" id="overlayMonth">
+  <div class="sheet">
+    <div class="sheet-header">
+      <div class="sheet-title">Selecionar mês</div>
+      <button class="sheet-close" data-close="overlayMonth">✕</button>
+    </div>
+    <div class="sheet-body">
+      <div class="year-selector">
+        <button id="yearPrev">◀</button>
+        <div class="year-label" id="yearLabel">—</div>
+        <button id="yearNext">▶</button>
+      </div>
+      <div class="month-grid" id="monthGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: FÉRIAS -->
+<div class="overlay" id="overlayFerias">
+  <div class="sheet">
+    <div class="sheet-header">
+      <div class="sheet-title" id="feriasTitle">Marcar férias</div>
+      <button class="sheet-close" data-close="overlayFerias">✕</button>
+    </div>
+    <div class="sheet-body">
+      <div id="feriasListWrap"></div>
+      <div class="form-group">
+        <label for="feriasInicio">Data inicial</label>
+        <input type="date" id="feriasInicio">
+      </div>
+      <div class="form-group">
+        <label for="feriasFim">Data final (opcional)</label>
+        <input type="date" id="feriasFim">
+      </div>
+    </div>
+    <div class="sheet-footer">
+      <button class="btn btn-danger" id="btnDeleteFerias" style="display:none;">Excluir</button>
+      <button class="btn btn-secondary" data-close="overlayFerias">Cancelar</button>
+      <button class="btn btn-primary" id="btnSaveFerias">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: BACKUP -->
+<div class="overlay" id="overlayBackup">
+  <div class="sheet">
+    <div class="sheet-header">
+      <div class="sheet-title">Backup</div>
+      <button class="sheet-close" data-close="overlayBackup">✕</button>
+    </div>
+    <div class="sheet-body">
+
+      <div class="tema-toggle" id="temaToggle" role="button" tabindex="0">
+        <span class="tema-icon" id="temaIcone">🌙</span>
+        <span class="tema-txt">
+          <span class="tema-titulo" id="temaTitulo">Modo escuro</span>
+          <span class="tema-sub" id="temaSub">Ativa o tema escuro do app</span>
+        </span>
+        <span class="switch"></span>
+      </div>
+
+      <div class="backup-actions">
+        <button class="btn-backup" id="btnExportar">
+          <span class="backup-icon">📤</span>
+          <span class="backup-txt">
+            <span>Fazer backup</span>
+            <span class="backup-sub">Baixar um arquivo com todos os dados</span>
+          </span>
+        </button>
+        <button class="btn-backup" id="btnImportar">
+          <span class="backup-icon">📥</span>
+          <span class="backup-txt">
+            <span>Importar backup</span>
+            <span class="backup-sub">Restaurar a partir de um arquivo salvo</span>
+          </span>
+        </button>
+      </div>
+      <input type="file" id="inputImport" accept="application/json,.json" style="display:none">
+    </div>
+    <div class="sheet-footer">
+      <button class="btn btn-secondary" data-close="overlayBackup">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  const LS_TIPOS       = "mila_nails_tipos";
+  const LS_AGENDA      = "mila_nails_agenda";
+  const LS_FERIAS      = "mila_nails_ferias";
+  const LS_FOLGAS      = "mila_nails_folgas";
+  const LS_FERIADOS    = "mila_nails_feriados_custom";
+  const LS_CONFIG      = "mila_nails_config";
+  const LS_TEMA        = "mila_nails_tema";
+  const LS_CONFIG_DOM  = "mila_nails_config_domicilio";
+  const LS_WHATSAPP    = "mila_nails_whatsapp";
+  const SS_BANNER      = "mila_nails_banner_data";
+
+  const WEEKDAYS = ["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"];
+  const MONTHS   = ["janeiro","fevereiro","março","abril","maio","junho",
+                    "julho","agosto","setembro","outubro","novembro","dezembro"];
+
+  const PRESET_COLORS = [
+    "#e57373","#f06292","#ba68c8","#64b5f6","#4db6ac",
+    "#ffb74d","#a1887f","#9575cd","#81c784","#7986cb",
+    "#4fc3f7","#dce775"
+  ];
+
+  const PASSO = 15;
+  const CONFIG_DOM_PADRAO = { taxa: 20.00, duracao: 150 };
+
+  const FERIADOS_NACIONAIS = [
+    { mes: 1,  dia: 1,  nome: "Confraternização Universal" },
+    { mes: 4,  dia: 21, nome: "Tiradentes" },
+    { mes: 5,  dia: 1,  nome: "Dia do Trabalho" },
+    { mes: 9,  dia: 7,  nome: "Independência do Brasil" },
+    { mes: 10, dia: 12, nome: "Nossa Senhora Aparecida" },
+    { mes: 11, dia: 2,  nome: "Finados" },
+    { mes: 11, dia: 15, nome: "Proclamação da República" },
+    { mes: 11, dia: 20, nome: "Consciência Negra" },
+    { mes: 12, dia: 25, nome: "Natal" }
+  ];
+
+  /* =========================================================
+     TEMA
+     ========================================================= */
+  function temaAtual(){
+    return document.documentElement.getAttribute("data-theme") || "light";
+  }
+
+  function aplicarTema(tema){
+    document.documentElement.setAttribute("data-theme", tema);
+    try{ localStorage.setItem(LS_TEMA, tema); }catch(e){}
+    atualizarToggleTema();
+  }
+
+  function alternarTema(){
+    aplicarTema(temaAtual() === "dark" ? "light" : "dark");
+  }
+
+  function atualizarToggleTema(){
+    const icone  = document.getElementById("temaIcone");
+    const titulo = document.getElementById("temaTitulo");
+    const sub    = document.getElementById("temaSub");
+    if(!icone) return;
+
+    if(temaAtual() === "dark"){
+      icone.textContent  = "☀️";
+      titulo.textContent = "Modo claro";
+      sub.textContent    = "Voltar para o tema claro";
+    } else {
+      icone.textContent  = "🌙";
+      titulo.textContent = "Modo escuro";
+      sub.textContent    = "Ativa o tema escuro do app";
+    }
+  }
+
+  const temaToggleEl = document.getElementById("temaToggle");
+  temaToggleEl.addEventListener("click", alternarTema);
+  temaToggleEl.addEventListener("keydown", e => {
+    if(e.key === "Enter" || e.key === " "){
+      e.preventDefault();
+      alternarTema();
+    }
+  });
+
+  /* =========================================================
+     ESTADO
+     ========================================================= */
+  let state = {
+    tipos: [],
+    agenda: {},
+    ferias: [],
+    folgas: {},
+    feriadosCustom: [],
+    viewYear: 0,
+    viewMonth: 0,
+    editingAgId: null,
+    editingAgDate: null,
+    editingTipoId: null,
+    editingFeriasId: null,
+    editingFeriadoId: null,
+    pickerYear: 0,
+    selectedColor: PRESET_COLORS[0],
+    buscaTermo: "",
+    configDomicilio: { ...CONFIG_DOM_PADRAO },
+    whatsapp: {
+      backendUrl: "",
+      apiKey: "",
+      ativo: false,
+      templateName: "confirmacao_agendamento",
+      languageCode: "pt_BR"
+    }
+  };
+
+  /* =========================================================
+     PERSISTÊNCIA
+     ========================================================= */
+  function load(){
+    try{
+      state.tipos  = JSON.parse(localStorage.getItem(LS_TIPOS)  || "[]");
+      state.agenda = JSON.parse(localStorage.getItem(LS_AGENDA) || "{}");
+      state.ferias = JSON.parse(localStorage.getItem(LS_FERIAS) || "[]");
+      state.feriadosCustom = JSON.parse(localStorage.getItem(LS_FERIADOS) || "[]");
+
+      const rawFolgas = JSON.parse(localStorage.getItem(LS_FOLGAS) || "null");
+      state.folgas = {};
+      if(Array.isArray(rawFolgas)){
+        rawFolgas.forEach(k => { state.folgas[k] = "dia-todo"; });
+      } else if(rawFolgas && typeof rawFolgas === "object"){
+        state.folgas = rawFolgas;
+      }
+
+      if(!Array.isArray(state.tipos))  state.tipos = [];
+      if(typeof state.agenda !== "object" || state.agenda === null) state.agenda = {};
+      if(!Array.isArray(state.ferias)) state.ferias = [];
+      if(!Array.isArray(state.feriadosCustom)) state.feriadosCustom = [];
+    }catch(e){
+      state.tipos = [];
+      state.agenda = {};
+      state.ferias = [];
+      state.folgas = {};
+      state.feriadosCustom = [];
+    }
+
+    try{
+      const cd = JSON.parse(localStorage.getItem(LS_CONFIG_DOM) || "null");
+      if(cd && typeof cd === "object"){
+        state.configDomicilio = {
+          taxa: (typeof cd.taxa === "number" && cd.taxa >= 0) ? cd.taxa : CONFIG_DOM_PADRAO.taxa,
+          duracao: (typeof cd.duracao === "number" && cd.duracao > 0) ? cd.duracao : CONFIG_DOM_PADRAO.duracao
+        };
+      }
+    }catch(e){}
+
+    try{
+      const wa = JSON.parse(localStorage.getItem(LS_WHATSAPP) || "null");
+      if(wa && typeof wa === "object"){
+        state.whatsapp = {
+          backendUrl: typeof wa.backendUrl === "string" ? wa.backendUrl : "",
+          apiKey: typeof wa.apiKey === "string" ? wa.apiKey : "",
+          ativo: !!wa.ativo,
+          templateName: (typeof wa.templateName === "string" && wa.templateName)
+            ? wa.templateName : "confirmacao_agendamento",
+          languageCode: (typeof wa.languageCode === "string" && wa.languageCode)
+            ? wa.languageCode : "pt_BR"
+        };
+      }
+    }catch(e){}
+
+    if(!localStorage.getItem(LS_CONFIG)){
+      localStorage.setItem(LS_CONFIG, JSON.stringify({versao:18}));
+    }
+  }
+  function saveTipos(){  localStorage.setItem(LS_TIPOS,  JSON.stringify(state.tipos));  }
+  function saveAgenda(){ localStorage.setItem(LS_AGENDA, JSON.stringify(state.agenda)); }
+  function saveFerias(){ localStorage.setItem(LS_FERIAS, JSON.stringify(state.ferias)); }
+  function saveFolgas(){ localStorage.setItem(LS_FOLGAS, JSON.stringify(state.folgas)); }
+  function saveFeriadosCustom(){ localStorage.setItem(LS_FERIADOS, JSON.stringify(state.feriadosCustom)); }
+  function saveConfigDomicilio(){ localStorage.setItem(LS_CONFIG_DOM, JSON.stringify(state.configDomicilio)); }
+  function saveWhatsapp(){ localStorage.setItem(LS_WHATSAPP, JSON.stringify(state.whatsapp)); }
+
+  /* =========================================================
+     HELPERS
+     ========================================================= */
+  function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+  function pad(n){ return String(n).padStart(2,"0"); }
+  function dateKey(y,m,d){ return y + "-" + pad(m+1) + "-" + pad(d); }
+  function todayKey(){
+    const t = new Date();
+    return dateKey(t.getFullYear(), t.getMonth(), t.getDate());
+  }
+  function getTipo(id){
+    return state.tipos.find(t => t.id === id) || null;
+  }
+  function escapeHtml(s){
+    if(s === undefined || s === null) return "";
+    return String(s)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+  }
+  function formatDateLong(key){
+    const [y,m,d] = key.split("-").map(Number);
+    const dt = new Date(y, m-1, d);
+    const wd = WEEKDAYS[dt.getDay()];
+    return wd + ", " + d + " de " + MONTHS[m-1] + " de " + y;
+  }
+  function formatDateBR(key){
+    if(!key) return "";
+    const [y,m,d] = key.split("-");
+    return d + "/" + m + "/" + y;
+  }
+  function formatBRL(v){
+    const n = Number(v);
+    if(!isFinite(n)) return "R$ 0,00";
+    return "R$ " + n.toFixed(2).replace(".", ",");
+  }
+  function periodOf(hora){
+    if(!hora) return 0;
+    const [h,m] = hora.split(":").map(Number);
+    const mins = h*60 + (m||0);
+    if(mins < 8*60)   return 0;
+    if(mins < 12*60)  return 1;
+    if(mins < 18*60)  return 2;
+    if(mins < 22*60)  return 3;
+    return 0;
+  }
+  function horaMinutos(hora){
+    if(!hora) return null;
+    const [h,m] = hora.split(":").map(Number);
+    if(isNaN(h) || isNaN(m)) return null;
+    return h*60 + m;
+  }
+  function minutosHora(min){
+    min = Math.max(0, Math.round(min));
+    const h = Math.floor(min / 60) % 24;
+    const m = min % 60;
+    return pad(h) + ":" + pad(m);
+  }
+  function arredondarParaCima(min, passo){
+    passo = passo || PASSO;
+    return Math.ceil(min / passo) * passo;
+  }
+
+  function duracao1Min(ag){
+    if(ag && ag.domicilio) return state.configDomicilio.duracao;
+    const d = Number(ag.duracao);
+    return d > 0 ? d : 30;
+  }
+  function duracao2Min(ag){
+    if(!ag.duplo) return 0;
+    if(ag.domicilio) return 0;
+    const d = Number(ag.duracao2);
+    return d > 0 ? d : 0;
+  }
+  function inicioCliente2Min(ag){
+    if(!ag.duplo) return null;
+    if(ag.domicilio) return null;
+    const h = horaMinutos(ag.hora);
+    if(h === null) return null;
+    const fim1 = h + duracao1Min(ag);
+    return arredondarParaCima(fim1, PASSO);
+  }
+
+  function intervaloMinutos(ag){
+    const h = horaMinutos(ag.hora);
+    if(h === null) return null;
+    if(ag.domicilio){
+      const dur = state.configDomicilio.duracao;
+      return { start: h, end: h + dur };
+    }
+    const d1 = duracao1Min(ag);
+    const d2 = duracao2Min(ag);
+    if(ag.duplo){
+      const inicio2Arr = arredondarParaCima(h + d1, PASSO);
+      const fim = inicio2Arr + d2;
+      return { start: h, end: Math.max(h + d1, fim) };
+    }
+    return { start: h, end: h + d1 };
+  }
+
+  function overlaps(a, b){
+    const ia = intervaloMinutos(a);
+    const ib = intervaloMinutos(b);
+    if(!ia || !ib) return false;
+    return ia.start < ib.end && ib.start < ia.end;
+  }
+
+  function feriasNaData(key){
+    return state.ferias.find(f => {
+      const ini = f.inicio;
+      const fim = f.fim || f.inicio;
+      return key >= ini && key <= fim;
+    }) || null;
+  }
+
+  /* =========================================================
+     FOLGAS — helpers
+     ========================================================= */
+  function folgaNaData(key){
+    return state.folgas[key] || null;
+  }
+  function temFolgaDiaTodo(key){
+    const v = state.folgas[key];
+    return v === "dia-todo" || v === "ambos";
+  }
+  function temFolgaManha(key){
+    const v = state.folgas[key];
+    return v === "manha" || v === "dia-todo" || v === "ambos";
+  }
+  function temFolgaTarde(key){
+    const v = state.folgas[key];
+    return v === "tarde" || v === "dia-todo" || v === "ambos";
+  }
+  function setFolga(key, tipo){
+    if(!tipo){
+      delete state.folgas[key];
+    } else {
+      state.folgas[key] = tipo;
+    }
+    saveFolgas();
+  }
+
+  function feriadoNaData(key){
+    const [y,m,d] = key.split("-").map(Number);
+    for(const f of FERIADOS_NACIONAIS){
+      if(f.mes === m && f.dia === d){
+        return { tipo: "nacional", nome: f.nome };
+      }
+    }
+    for(const f of state.feriadosCustom){
+      if(f.mes === m && f.dia === d){
+        if(f.anual) return { tipo: "custom", nome: f.nome };
+        if(f.ano === y) return { tipo: "custom", nome: f.nome };
+      }
+    }
+    return null;
+  }
+
+  function contarDiasComMatch(termo){
+    if(!termo) return 0;
+    termo = termo.toLowerCase();
+    const y = state.viewYear;
+    const m = state.viewMonth;
+    const diasNoMes = new Date(y, m+1, 0).getDate();
+    let n = 0;
+    for(let d = 1; d <= diasNoMes; d++){
+      const key = dateKey(y, m, d);
+      const ags = state.agenda[key] || [];
+      const temMatch = ags.some(a => {
+        const c1 = (a.cliente || "").toLowerCase();
+        const c2 = a.duplo ? (a.cliente2 || "").toLowerCase() : "";
+        return c1.indexOf(termo) !== -1 || c2.indexOf(termo) !== -1;
+      });
+      if(temMatch) n++;
+    }
+    return n;
+  }
+
+  function precoTipo(ag){
+    const t = getTipo(ag.tipoId);
+    const p = t && typeof t.preco === "number" ? t.preco : 0;
+    return p;
+  }
+  function totalAgendamento(ag){
+    const base = precoTipo(ag);
+    const taxa = ag.domicilio ? state.configDomicilio.taxa : 0;
+    return base + taxa;
+  }
+
+  /* =========================================================
+     BANNER DE BOAS-VINDAS
+     ========================================================= */
+  function contarClientesHoje(){
+    const key = todayKey();
+    const ags = state.agenda[key] || [];
+    const agora = new Date();
+    const agoraMin = agora.getHours()*60 + agora.getMinutes();
+    let n = 0;
+
+    ags.forEach(a => {
+      if(!a) return;
+      const temC1 = a.cliente && String(a.cliente).trim() !== "";
+      const temC2 = a.duplo && !a.domicilio && a.cliente2 && String(a.cliente2).trim() !== "";
+      if(!temC1 && !temC2) return;
+
+      if(!a.hora){
+        if(temC1) n++;
+        if(temC2) n++;
+        return;
+      }
+
+      const iv = intervaloMinutos(a);
+      if(!iv){
+        if(temC1) n++;
+        if(temC2) n++;
+        return;
+      }
+      if(iv.end <= agoraMin) return;
+
+      if(temC1){
+        const fim1 = horaMinutos(a.hora) + duracao1Min(a);
+        if(fim1 > agoraMin) n++;
+      }
+      if(temC2){
+        const ini2 = inicioCliente2Min(a);
+        if(ini2 !== null && ini2 > agoraMin) n++;
+      }
+    });
+
+    return n;
+  }
+
+  function saudacaoPorHora(){
+    const h = new Date().getHours();
+    if(h < 12) return "Bom dia";
+    if(h < 18) return "Boa tarde";
+    return "Boa noite";
+  }
+
+  function bannerJaMostradoHoje(){
+    try{
+      return sessionStorage.getItem(SS_BANNER) === todayKey();
+    }catch(e){ return false; }
+  }
+  function marcarBannerMostrado(){
+    try{ sessionStorage.setItem(SS_BANNER, todayKey()); }catch(e){}
+  }
+
+  function mostrarBannerBoasVindas(){
+    if(bannerJaMostradoHoje()) return;
+
+    const n = contarClientesHoje();
+    if(n === 0) return;
+
+    const wrap = document.getElementById("bannerWrap");
+    if(!wrap) return;
+
+    const saud = saudacaoPorHora();
+    const texto = n === 1
+      ? (saud + "! Você ainda tem <strong>1 cliente</strong> hoje.")
+      : (saud + "! Você ainda tem <strong>" + n + " clientes</strong> hoje.");
+
+    wrap.innerHTML =
+      '<div class="banner-boas-vindas" id="bannerBoasVindas">' +
+        '<span class="bb-icon">📅</span>' +
+        '<span class="bb-texto">' + texto + '</span>' +
+        '<button class="bb-fechar" type="button" aria-label="Fechar">✕</button>' +
+      '</div>';
+
+    const banner = document.getElementById("bannerBoasVindas");
+    const fechar = () => {
+      if(!banner) return;
+      banner.classList.add("saindo");
+      setTimeout(() => {
+        if(banner && banner.parentNode) banner.parentNode.removeChild(banner);
+      }, 300);
+    };
+    banner.querySelector(".bb-fechar").addEventListener("click", fechar);
+    setTimeout(fechar, 8000);
+
+    marcarBannerMostrado();
+  }
+
+  /* =========================================================
+     SELECT DE HORÁRIOS
+     ========================================================= */
+  function popularHorarios(valorAtual, idAtual){
+    const sel = document.getElementById("agHora");
+    sel.innerHTML = '<option value="">— Sem horário —</option>';
+
+    const ocupados = {};
+    const ags = state.agenda[currentDayKey] || [];
+    ags.forEach(ag => {
+      if(!ag.hora) return;
+      if(idAtual && ag.id === idAtual) return;
+      const iv = intervaloMinutos(ag);
+      if(!iv) return;
+      for(let t = iv.start; t < iv.end; t += PASSO){
+        const hh = pad(Math.floor(t/60));
+        const mm = pad(t % 60);
+        ocupados[hh + ":" + mm] = true;
+      }
+    });
+
+    const manha = [];
+    const tarde = [];
+    const noite = [];
+
+    for(let h = 7; h <= 22; h++){
+      const hh = pad(h);
+      const slots = (h < 22)
+        ? [hh + ":00", hh + ":15", hh + ":30", hh + ":45"]
+        : [hh + ":00"];
+      slots.forEach(t => {
+        const hora = parseInt(t.split(":")[0], 10);
+        const opt = { value: t, label: t, ocupado: !!ocupados[t] };
+        if(hora < 12)       manha.push(opt);
+        else if(hora < 18)  tarde.push(opt);
+        else                noite.push(opt);
+      });
+    }
+
+    let custom = null;
+    if(valorAtual){
+      const all = manha.concat(tarde, noite).map(o => o.value);
+      if(all.indexOf(valorAtual) === -1) custom = valorAtual;
+    }
+
+    function addGroup(label, list){
+      if(list.length === 0) return;
+      const grp = document.createElement("optgroup");
+      grp.label = label;
+      list.forEach(o => {
+        const opt = document.createElement("option");
+        opt.value = o.value;
+        opt.textContent = o.ocupado ? (o.label + "  (ocupado)") : o.label;
+        grp.appendChild(opt);
+      });
+      sel.appendChild(grp);
+    }
+
+    if(custom){
+      const grp = document.createElement("optgroup");
+      grp.label = "Atual";
+      const opt = document.createElement("option");
+      opt.value = custom;
+      opt.textContent = custom + " (atual)";
+      grp.appendChild(opt);
+      sel.appendChild(grp);
+    }
+
+    addGroup("Manhã", manha);
+    addGroup("Tarde", tarde);
+    addGroup("Noite", noite);
+
+    sel.value = valorAtual || "";
+  }
+
+  /* =========================================================
+     OVERLAYS
+     ========================================================= */
+  function openOverlay(id){
+    document.getElementById(id).classList.add("show");
+    document.body.classList.add("overlay-open");
+  }
+  function closeOverlay(id){
+    document.getElementById(id).classList.remove("show");
+    if(!document.querySelector(".overlay.show")){
+      document.body.classList.remove("overlay-open");
+    }
+  }
+  function algumaOverlayAberta(){
+    return !!document.querySelector(".overlay.show");
+  }
+
+  document.querySelectorAll("[data-close]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-close");
+      closeOverlay(id);
+    });
+  });
+  document.querySelectorAll(".overlay").forEach(ov => {
+    ov.addEventListener("click", e => {
+      if(e.target === ov) closeOverlay(ov.id);
+    });
+  });
+
+  /* =========================================================
+     RENDER: CABEÇALHO DO MÊS
+     ========================================================= */
+  function renderMonthLabel(){
+    document.getElementById("monthLabel").textContent =
+      MONTHS[state.viewMonth] + " " + state.viewYear;
+  }
+
+  /* =========================================================
+     RENDER: TARJA DE FILTRO ATIVO
+     ========================================================= */
+  function renderFiltroBanner(){
+    const banner = document.getElementById("filtroBanner");
+    const texto = document.getElementById("filtroTexto");
+    const termo = (state.buscaTermo || "").trim();
+
+    if(termo){
+      const n = contarDiasComMatch(termo);
+      texto.textContent = '🔍 Buscando: "' + termo + '" — ' + n + (n === 1 ? " dia" : " dias");
+      banner.classList.add("show");
+      document.body.classList.add("filtro-ativo");
+      document.getElementById("btnBuscaFloat").classList.add("ativo");
+    } else {
+      banner.classList.remove("show");
+      document.body.classList.remove("filtro-ativo");
+      document.getElementById("btnBuscaFloat").classList.remove("ativo");
+    }
+  }
+
+  /* =========================================================
+     RENDER: GRADE DO CALENDÁRIO
+     ========================================================= */
+  function renderGrid(){
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
+
+    const y = state.viewYear;
+    const m = state.viewMonth;
+
+    const firstDay = new Date(y, m, 1).getDay();
+    const daysInMonth = new Date(y, m+1, 0).getDate();
+    const daysInPrev  = new Date(y, m, 0).getDate();
+
+    const totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
+
+    const today = todayKey();
+    const termo = (state.buscaTermo || "").trim().toLowerCase();
+
+    for(let i = 0; i < totalCells; i++){
+      const cell = document.createElement("div");
+      cell.className = "day";
+
+      let dayNum, cellMonth = m, cellYear = y, cellKey;
+
+      if(i < firstDay){
+        dayNum = daysInPrev - firstDay + 1 + i;
+        cellMonth = m - 1;
+        cellYear = y;
+        if(cellMonth < 0){ cellMonth = 11; cellYear--; }
+        cell.classList.add("other-month");
+      } else if(i >= firstDay + daysInMonth){
+        dayNum = i - (firstDay + daysInMonth) + 1;
+        cellMonth = m + 1;
+        cellYear = y;
+        if(cellMonth > 11){ cellMonth = 0; cellYear++; }
+        cell.classList.add("other-month");
+      } else {
+        dayNum = i - firstDay + 1;
+      }
+
+      cellKey = dateKey(cellYear, cellMonth, dayNum);
+
+      if(cellKey === today) cell.classList.add("today");
+
+      const f = feriasNaData(cellKey);
+      if(f) cell.classList.add("vacation");
+
+      const folga = folgaNaData(cellKey);
+      const isFolgaDiaTodo = (folga === "dia-todo" || folga === "ambos");
+      if(isFolgaDiaTodo) cell.classList.add("folga-dia-todo");
+
+      const fer = feriadoNaData(cellKey);
+      if(fer) cell.classList.add("feriado");
+
+      if(termo){
+        const ags = state.agenda[cellKey] || [];
+        const temMatch = ags.some(a => {
+          const c1 = (a.cliente || "").toLowerCase();
+          const c2 = a.duplo ? (a.cliente2 || "").toLowerCase() : "";
+          return c1.indexOf(termo) !== -1 || c2.indexOf(termo) !== -1;
+        });
+        if(temMatch) cell.classList.add("destaque-busca");
+        else         cell.classList.add("sem-match");
+      }
+
+      const numEl = document.createElement("div");
+      numEl.className = "day-number";
+      numEl.textContent = dayNum;
+      cell.appendChild(numEl);
+
+      let iconHTML = "";
+      if(fer){
+        iconHTML += fer.tipo === "nacional" ? "🇧🇷" : "🎉";
+      }
+      if(f)  iconHTML += (iconHTML ? " " : "") + "🏖️";
+      if(folga) iconHTML += (iconHTML ? " " : "") + "🛌";
+
+      if(iconHTML){
+        const icon = document.createElement("div");
+        icon.className = "vacation-icon";
+        icon.textContent = iconHTML;
+        cell.appendChild(icon);
+      }
+
+      const ags = state.agenda[cellKey] || [];
+      renderDaySlots(cell, ags, cellKey);
+
+      cell.addEventListener("click", () => openDayModal(cellKey));
+
+      grid.appendChild(cell);
+    }
+
+    renderFiltroBanner();
+  }
+
+  function renderDaySlots(cell, ags, cellKey){
+    const byPeriod = {0:[],1:[],2:[],3:[]};
+    ags.forEach(a => byPeriod[periodOf(a.hora)].push(a));
+
+    [0,1,2,3].forEach(p => {
+      byPeriod[p].sort((a,b) => (a.hora||"").localeCompare(b.hora||""));
+    });
+
+    const folgaManha = temFolgaManha(cellKey);
+    const folgaTarde = temFolgaTarde(cellKey);
+
+    const periodsToRender = [1,2,3];
+    if(byPeriod[0].length > 0) periodsToRender.unshift(0);
+
+    periodsToRender.forEach(p => {
+      const slot = document.createElement("div");
+      slot.className = "slot";
+      const items = byPeriod[p];
+      if(items.length > 0) slot.classList.add("has-items");
+
+      if(p === 1 && folgaManha) slot.classList.add("folga-manha");
+      if(p === 2 && folgaTarde) slot.classList.add("folga-tarde");
+
+      const rows = groupIntoRows(items);
+
+      rows.forEach(rowItems => {
+        rowItems.forEach(ag => {
+          if(ag.duplo && !ag.domicilio){
+            const tipo1 = getTipo(ag.tipoId);
+            const tipo2 = ag.tipoId2 ? getTipo(ag.tipoId2) : null;
+            const cor1 = tipo1 ? tipo1.cor : "#bdbdbd";
+            const cor2 = tipo2 ? tipo2.cor : "#90caf9";
+
+            const row1 = document.createElement("div");
+            row1.className = "slot-row";
+            const line1 = document.createElement("div");
+            line1.className = "line";
+            line1.style.background = cor1;
+            row1.appendChild(line1);
+            slot.appendChild(row1);
+
+            const row2 = document.createElement("div");
+            row2.className = "slot-row";
+            const line2 = document.createElement("div");
+            line2.className = "line";
+            line2.style.background = cor2;
+            row2.appendChild(line2);
+            slot.appendChild(row2);
+
+          } else {
+            const row = document.createElement("div");
+            row.className = "slot-row";
+            const line = document.createElement("div");
+            line.className = "line";
+            const tipo = getTipo(ag.tipoId);
+            const cor = tipo ? tipo.cor : "#bdbdbd";
+
+            if(ag.domicilio){
+              line.style.backgroundImage =
+                "repeating-linear-gradient(" +
+                  "45deg," +
+                  cor + " 0," +
+                  cor + " 3px," +
+                  "rgba(255,255,255,.55) 3px," +
+                  "rgba(255,255,255,.55) 6px" +
+                ")";
+            } else {
+              line.style.background = cor;
+            }
+
+            row.appendChild(line);
+            slot.appendChild(row);
+          }
+        });
+      });
+
+      cell.appendChild(slot);
+    });
+  }
+
+  function groupIntoRows(items){
+    const rows = [];
+    items.forEach(ag => {
+      let placed = false;
+      for(const row of rows){
+        const hasOverlap = row.some(other => overlaps(ag, other));
+        if(hasOverlap){
+          row.push(ag);
+          placed = true;
+          break;
+        }
+      }
+      if(!placed) rows.push([ag]);
+    });
+    return rows;
+  }
+
+  /* =========================================================
+     BUSCA
+     ========================================================= */
+  const inputBusca = document.getElementById("buscaCliente");
+
+  function abrirBusca(){
+    inputBusca.value = state.buscaTermo || "";
+    document.getElementById("btnLimparBusca").classList.toggle("show", inputBusca.value.length > 0);
+    atualizarResultadoBusca();
+    openOverlay("overlayBusca");
+    setTimeout(() => {
+      try{ inputBusca.focus({ preventScroll: true }); }catch(e){ inputBusca.focus(); }
+    }, 100);
+  }
+
+  function atualizarResultadoBusca(){
+    const el = document.getElementById("buscaResultado");
+    const termo = (inputBusca.value || "").trim();
+    if(!termo){
+      el.textContent = "Digite para filtrar";
+      return;
+    }
+    const n = contarDiasComMatch(termo);
+    el.innerHTML = '<span class="num">' + n + '</span>' +
+                   (n === 1 ? "dia encontrado neste mês" : "dias encontrados neste mês");
+  }
+
+  inputBusca.addEventListener("input", e => {
+    const val = e.target.value;
+    document.getElementById("btnLimparBusca").classList.toggle("show", val.length > 0);
+    atualizarResultadoBusca();
+  });
+
+  document.getElementById("btnLimparBusca").addEventListener("click", () => {
+    inputBusca.value = "";
+    document.getElementById("btnLimparBusca").classList.remove("show");
+    atualizarResultadoBusca();
+    try{ inputBusca.focus({ preventScroll: true }); }catch(e){ inputBusca.focus(); }
+  });
+
+  document.getElementById("btnOkBusca").addEventListener("click", () => {
+    const termo = (inputBusca.value || "").trim();
+    closeOverlay("overlayBusca");
+    try{ inputBusca.blur(); }catch(e){}
+    if(document.activeElement && document.activeElement.blur){
+      try{ document.activeElement.blur(); }catch(e){}
+    }
+    state.buscaTermo = termo;
+    renderGrid();
+  });
+
+  document.getElementById("btnBuscaFloat").addEventListener("click", abrirBusca);
+
+  document.getElementById("btnLimparFiltro").addEventListener("click", () => {
+    state.buscaTermo = "";
+    renderGrid();
+  });
+
+  /* =========================================================
+     MODAL DO DIA
+     ========================================================= */
+  let currentDayKey = null;
+
+  function openDayModal(key){
+    currentDayKey = key;
+    document.getElementById("dayTitle").textContent = formatDateLong(key);
+    renderDayBody();
+    atualizarChipFolga();
+    openOverlay("overlayDay");
+  }
+
+  function atualizarChipFolga(){
+    const chip = document.getElementById("chipFolga");
+    if(!currentDayKey){ chip.classList.remove("ativo"); return; }
+    if(folgaNaData(currentDayKey)) chip.classList.add("ativo");
+    else chip.classList.remove("ativo");
+  }
+
+  document.getElementById("chipFolga").addEventListener("click", (e) => {
+    e.stopPropagation();
+    if(!currentDayKey) return;
+    closeOverlay("overlayDay");
+    openOverlay("overlayFolga");
+  });
+
+  document.getElementById("btnVacation").addEventListener("click", (e) => {
+    e.stopPropagation();
+    closeOverlay("overlayDay");
+    openFeriasForm(null);
+  });
+
+  document.getElementById("btnAddAg").addEventListener("click", (e) => {
+    e.stopPropagation();
+    closeOverlay("overlayDay");
+    openAgForm(null);
+  });
+
+  /* =========================================================
+     FOLGA — OVERLAY 1
+     ========================================================= */
+  document.getElementById("folgaOpDiaTodo").addEventListener("click", () => {
+    if(!currentDayKey) return;
+    if(state.folgas[currentDayKey] === "dia-todo"){
+      setFolga(currentDayKey, null);
+    } else {
+      setFolga(currentDayKey, "dia-todo");
+    }
+    closeOverlay("overlayFolga");
+    renderGrid();
+  });
+
+  document.getElementById("folgaOpPeriodo").addEventListener("click", () => {
+    closeOverlay("overlayFolga");
+    atualizarOverlayFolgaPeriodo();
+    openOverlay("overlayFolgaPeriodo");
+  });
+
+  /* =========================================================
+     FOLGA — OVERLAY 2
+     ========================================================= */
+  function atualizarOverlayFolgaPeriodo(){
+    const opM = document.getElementById("folgaOpManha");
+    const opT = document.getElementById("folgaOpTarde");
+    opM.classList.remove("ativo");
+    opT.classList.remove("ativo");
+    if(!currentDayKey) return;
+    const v = state.folgas[currentDayKey];
+    if(v === "manha" || v === "dia-todo" || v === "ambos") opM.classList.add("ativo");
+    if(v === "tarde" || v === "dia-todo" || v === "ambos") opT.classList.add("ativo");
+  }
+
+  document.getElementById("folgaOpManha").addEventListener("click", () => {
+    if(!currentDayKey) return;
+    const v = state.folgas[currentDayKey];
+    if(v === "manha"){
+      setFolga(currentDayKey, null);
+    } else if(v === "dia-todo" || v === "ambos"){
+      setFolga(currentDayKey, "tarde");
+    } else if(v === "tarde"){
+      setFolga(currentDayKey, "ambos");
+    } else {
+      setFolga(currentDayKey, "manha");
+    }
+    closeOverlay("overlayFolgaPeriodo");
+    renderGrid();
+  });
+
+  document.getElementById("folgaOpTarde").addEventListener("click", () => {
+    if(!currentDayKey) return;
+    const v = state.folgas[currentDayKey];
+    if(v === "tarde"){
+      setFolga(currentDayKey, null);
+    } else if(v === "dia-todo" || v === "ambos"){
+      setFolga(currentDayKey, "manha");
+    } else if(v === "manha"){
+      setFolga(currentDayKey, "ambos");
+    } else {
+      setFolga(currentDayKey, "tarde");
+    }
+    closeOverlay("overlayFolgaPeriodo");
+    renderGrid();
+  });
+
+  document.getElementById("btnVoltarFolga").addEventListener("click", () => {
+    closeOverlay("overlayFolgaPeriodo");
+    openOverlay("overlayFolga");
+  });
+
+  document.getElementById("btnLimparFolga").addEventListener("click", () => {
+    if(!currentDayKey) return;
+    setFolga(currentDayKey, null);
+    closeOverlay("overlayFolgaPeriodo");
+    renderGrid();
+  });
+
+  function renderDayBody(){
+    const body = document.getElementById("dayBody");
+    body.innerHTML = "";
+
+    const fer = feriadoNaData(currentDayKey);
+    if(fer){
+      const banner = document.createElement("div");
+      banner.className = "feriado-banner";
+      banner.innerHTML =
+        '<span class="fb-icon">' + (fer.tipo === "nacional" ? "🇧🇷" : "🎉") + '</span>' +
+        '<span>' + escapeHtml(fer.nome) + '</span>';
+      body.appendChild(banner);
+    }
+
+    const folga = folgaNaData(currentDayKey);
+    if(folga){
+      const banner = document.createElement("div");
+      banner.className = "folga-banner";
+      let txt = "🛌 Folga";
+      if(folga === "manha") txt = "☀️ Folga pela manhã";
+      else if(folga === "tarde") txt = "🌙 Folga pela tarde";
+      else if(folga === "dia-todo" || folga === "ambos") txt = "🛌 Folga o dia inteiro";
+      banner.innerHTML = '<span class="fb-icon">🛌</span><span>' + txt + '</span>';
+      body.appendChild(banner);
+    }
+
+    const f = feriasNaData(currentDayKey);
+    if(f){
+      const banner = document.createElement("div");
+      banner.className = "vacation-banner";
+      const ini = formatDateBR(f.inicio);
+      const fim = formatDateBR(f.fim || f.inicio);
+      const txt = (f.fim && f.fim !== f.inicio)
+        ? ("🏖️ Férias: " + ini + " até " + fim)
+        : ("🏖️ Férias em " + ini);
+      banner.innerHTML =
+        '<div class="vb-text">' + escapeHtml(txt) + '</div>' +
+        '<button type="button">Editar</button>';
+      banner.querySelector("button").addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeOverlay("overlayDay");
+        openFeriasForm(f.id);
+      });
+      body.appendChild(banner);
+    }
+
+    const ags = (state.agenda[currentDayKey] || []).slice();
+
+    if(ags.length === 0){
+      const empty = document.createElement("div");
+      empty.className = "empty-msg";
+      empty.textContent = "Nenhum agendamento neste dia.";
+      body.appendChild(empty);
+      return;
+    }
+
+    ags.sort((a,b) => {
+      const ha = a.hora || "99:99";
+      const hb = b.hora || "99:99";
+      return ha.localeCompare(hb);
+    });
+
+    ags.forEach(ag => {
+      const tipo = getTipo(ag.tipoId);
+      const cor = tipo ? tipo.cor : "#bdbdbd";
+      const nomeTipo = tipo ? tipo.nome : "Tipo removido";
+      const dur = duracao1Min(ag);
+
+      const el = document.createElement("div");
+      el.className = "ag-item";
+      el.style.borderLeftColor = cor;
+
+      const juntos = ags.filter(o => o.id !== ag.id && overlaps(ag, o));
+
+      let html = "";
+      html += '<div class="ag-head">';
+      html +=   '<div class="ag-hora">' + escapeHtml(ag.hora || "--:--") + '</div>';
+      html +=   '<div class="ag-cliente">' + escapeHtml(ag.cliente || "(sem nome)") + '</div>';
+      html += '</div>';
+      html += '<div class="ag-tipo">';
+      html +=   '<span class="ag-tipo-dot" style="background:' + cor + '"></span>';
+      html +=   escapeHtml(nomeTipo);
+      html +=   ' · ' + escapeHtml(dur) + ' min';
+      html += '</div>';
+
+      if(ag.duplo && !ag.domicilio){
+        const tipo2 = ag.tipoId2 ? getTipo(ag.tipoId2) : null;
+        const cor2 = tipo2 ? tipo2.cor : "#90caf9";
+        const nomeTipo2 = tipo2 ? tipo2.nome : "Sem tipo";
+        const nomeC2 = ag.cliente2 ? ag.cliente2 : "(sem nome)";
+
+        let hora2 = "--:--";
+        const ini2 = inicioCliente2Min(ag);
+        if(ini2 !== null) hora2 = minutosHora(ini2);
+
+        html += '<div class="ag-badge duplo">👥 Duas clientes</div>';
+
+        html += '<div class="ag-cliente2-bloco">';
+        html +=   '<div class="ag-cliente2-head">';
+        html +=     '<div class="ag-hora2">' + escapeHtml(hora2) + '</div>';
+        html +=     '<div class="ag-cliente2">' + escapeHtml(nomeC2) + '</div>';
+        html +=   '</div>';
+        html +=   '<div class="ag-tipo2">';
+        html +=     '<span class="ag-tipo-dot" style="background:' + cor2 + '"></span>';
+        html +=     escapeHtml(nomeTipo2);
+        if(ag.duracao2) html += ' · ' + escapeHtml(ag.duracao2) + ' min';
+        html +=   '</div>';
+        html += '</div>';
+      }
+
+      if(ag.domicilio){
+        html += '<div class="ag-badge domicilio">🏠 Atendimento a domicílio</div>';
+        const base = precoTipo(ag);
+        const taxa = state.configDomicilio.taxa;
+        const total = base + taxa;
+
+        if(base > 0 || taxa > 0){
+          html += '<div class="ag-preco-linha">';
+          html +=   '<span class="ag-preco-label">Taxa de domicílio:</span>';
+          html +=   '<span class="ag-preco-valor">' + escapeHtml(formatBRL(taxa)) + '</span>';
+          html += '</div>';
+          html += '<div class="ag-preco-total">';
+          html +=   '<span>💰 Total:</span>';
+          html +=   '<span>' + escapeHtml(formatBRL(total)) + '</span>';
+          html += '</div>';
+        }
+      }
+
+      if(juntos.length > 0){
+        const nomes = juntos.map(j => j.cliente || "(sem nome)").join(", ");
+        html += '<div class="ag-badge">⧉ Junto com: ' + escapeHtml(nomes) + '</div>';
+      }
+
+      if(ag.telefone){
+        html += '<div class="ag-obs">📞 ' + escapeHtml(ag.telefone) + '</div>';
+      }
+      if(ag.obs){
+        html += '<div class="ag-obs">' + escapeHtml(ag.obs) + '</div>';
+      }
+
+      el.innerHTML = html;
+      el.addEventListener("click", () => {
+        closeOverlay("overlayDay");
+        openAgForm(ag.id);
+      });
+      body.appendChild(el);
+    });
+  }
+
+  /* =========================================================
+     FORM AGENDAMENTO
+     ========================================================= */
+  const chkDuplo = document.getElementById("agDuplo");
+  const checkDuploWrap = document.getElementById("checkDuploWrap");
+  const blocoCliente2 = document.getElementById("cliente2Bloco");
+  const cliente2Horario = document.getElementById("cliente2Horario");
+  const chipDomicilio = document.getElementById("chipDomicilio");
+  const chipDomicilioInfo = document.getElementById("chipDomicilioInfo");
+
+  let agDomicilioAtivo = false;
+
+  function toggleCliente2(){
+    if(chkDuplo.checked && !agDomicilioAtivo){
+      blocoCliente2.classList.add("show");
+      atualizarHorarioCliente2Form();
+    } else {
+      blocoCliente2.classList.remove("show");
+    }
+  }
+  chkDuplo.addEventListener("change", toggleCliente2);
+
+  function atualizarHorarioCliente2Form(){
+    if(agDomicilioAtivo) return;
+    const hora = document.getElementById("agHora").value;
+    const dur1 = Number(document.getElementById("agDuracao").value);
+
+    if(!hora){
+      cliente2Horario.textContent = "—";
+      cliente2Horario.classList.add("vazio");
+      return;
+    }
+    const h = horaMinutos(hora);
+    if(h === null){
+      cliente2Horario.textContent = "—";
+      cliente2Horario.classList.add("vazio");
+      return;
+    }
+    const d1 = dur1 > 0 ? dur1 : 30;
+    const ini2 = arredondarParaCima(h + d1, PASSO);
+    cliente2Horario.textContent = "início: " + minutosHora(ini2);
+    cliente2Horario.classList.remove("vazio");
+  }
+
+  document.getElementById("agHora").addEventListener("change", atualizarHorarioCliente2Form);
+  document.getElementById("agDuracao").addEventListener("input", atualizarHorarioCliente2Form);
+
+  function atualizarChipDomicilio(){
+    if(agDomicilioAtivo){
+      chipDomicilio.classList.add("ativo");
+      const dur = state.configDomicilio.duracao;
+      const taxa = state.configDomicilio.taxa;
+      chipDomicilioInfo.textContent =
+        "Duração fixa de " + dur + " min · Taxa: " + formatBRL(taxa);
+
+      const durInput = document.getElementById("agDuracao");
+      durInput.disabled = true;
+      durInput.value = dur;
+
+      checkDuploWrap.classList.add("desabilitado");
+      if(chkDuplo.checked){
+        chkDuplo.checked = false;
+        toggleCliente2();
+      }
+    } else {
+      chipDomicilio.classList.remove("ativo");
+      chipDomicilioInfo.textContent = "";
+
+      document.getElementById("agDuracao").disabled = false;
+      checkDuploWrap.classList.remove("desabilitado");
+
+      const tipoId = document.getElementById("agTipo").value;
+      const t = tipoId ? getTipo(tipoId) : null;
+      if(t && t.duracao){
+        document.getElementById("agDuracao").value = t.duracao;
+      } else {
+        document.getElementById("agDuracao").value = "";
+      }
+
+      atualizarHorarioCliente2Form();
+    }
+  }
+
+  function alternarDomicilio(){
+    agDomicilioAtivo = !agDomicilioAtivo;
+    atualizarChipDomicilio();
+  }
+  chipDomicilio.addEventListener("click", alternarDomicilio);
+  chipDomicilio.addEventListener("keydown", e => {
+    if(e.key === "Enter" || e.key === " "){
+      e.preventDefault();
+      alternarDomicilio();
+    }
+  });
+
+  function popularSelectTipo(sel, valorAtual){
+    sel.innerHTML = '<option value="">— Sem tipo —</option>';
+    state.tipos.forEach(t => {
+      const opt = document.createElement("option");
+      opt.value = t.id;
+      opt.textContent = t.nome;
+      sel.appendChild(opt);
+    });
+    sel.value = valorAtual || "";
+    sel.dataset.tipoAnterior = valorAtual || "";
+  }
+
+  function openAgForm(agId){
+    state.editingAgId = agId || null;
+    const isEdit = !!agId;
+
+    document.getElementById("agTitle").textContent = isEdit ? "Editar agendamento" : "Novo agendamento";
+    document.getElementById("btnDeleteAg").style.display = isEdit ? "block" : "none";
+
+    const selTipo  = document.getElementById("agTipo");
+    const selTipo2 = document.getElementById("agTipo2");
+
+    agDomicilioAtivo = false;
+
+    if(isEdit){
+      const ag = (state.agenda[currentDayKey] || []).find(a => a.id === agId);
+      if(ag){
+        popularHorarios(ag.hora || "", ag.id);
+        chkDuplo.checked = !!ag.duplo;
+
+        popularSelectTipo(selTipo,  ag.tipoId  || "");
+        popularSelectTipo(selTipo2, ag.tipoId2 || "");
+
+        document.getElementById("agCliente").value    = ag.cliente || "";
+        document.getElementById("agTelefone").value   = ag.telefone || "";
+        document.getElementById("agDuracao").value    = ag.duracao || "";
+        document.getElementById("agObs").value        = ag.obs || "";
+
+        document.getElementById("agCliente2").value   = ag.cliente2 || "";
+        document.getElementById("agDuracao2").value   = ag.duracao2 || "";
+
+        agDomicilioAtivo = !!ag.domicilio;
+      } else {
+        popularHorarios("", null);
+        popularSelectTipo(selTipo,  "");
+        popularSelectTipo(selTipo2, "");
+        chkDuplo.checked = false;
+        document.getElementById("agCliente").value    = "";
+        document.getElementById("agTelefone").value   = "";
+        document.getElementById("agDuracao").value    = "";
+        document.getElementById("agObs").value        = "";
+        document.getElementById("agCliente2").value   = "";
+        document.getElementById("agDuracao2").value   = "";
+      }
+    } else {
+      popularHorarios("", null);
+      popularSelectTipo(selTipo,  "");
+      popularSelectTipo(selTipo2, "");
+      chkDuplo.checked = false;
+      document.getElementById("agCliente").value    = "";
+      document.getElementById("agTelefone").value   = "";
+      document.getElementById("agDuracao").value    = "";
+      document.getElementById("agObs").value        = "";
+      document.getElementById("agCliente2").value   = "";
+      document.getElementById("agDuracao2").value   = "";
+    }
+
+    atualizarChipDomicilio();
+    toggleCliente2();
+    openOverlay("overlayAg");
+  }
+
+  document.getElementById("agTipo").addEventListener("change", e => {
+    const novoTipoId = e.target.value;
+    const tipoAnteriorId = e.target.dataset.tipoAnterior || "";
+
+    if(agDomicilioAtivo){
+      e.target.dataset.tipoAnterior = novoTipoId;
+      return;
+    }
+
+    if(novoTipoId !== tipoAnteriorId){
+      const t = getTipo(novoTipoId);
+      if(t && t.duracao){
+        document.getElementById("agDuracao").value = t.duracao;
+        atualizarHorarioCliente2Form();
+      }
+    }
+
+    e.target.dataset.tipoAnterior = novoTipoId;
+  });
+
+  document.getElementById("agTipo2").addEventListener("change", e => {
+    const novoTipoId = e.target.value;
+    const tipoAnteriorId = e.target.dataset.tipoAnterior || "";
+
+    if(novoTipoId !== tipoAnteriorId){
+      const t = getTipo(novoTipoId);
+      if(t && t.duracao){
+        document.getElementById("agDuracao2").value = t.duracao;
+      }
+    }
+
+    e.target.dataset.tipoAnterior = novoTipoId;
+  });
+
+  document.getElementById("btnSaveAg").addEventListener("click", () => {
+    const hora     = document.getElementById("agHora").value.trim();
+    const cliente  = document.getElementById("agCliente").value.trim();
+    const telefone = document.getElementById("agTelefone").value.trim();
+    const tipoId   = document.getElementById("agTipo").value;
+    const duracao  = document.getElementById("agDuracao").value;
+    const obs      = document.getElementById("agObs").value.trim();
+    const duplo    = chkDuplo.checked && !agDomicilioAtivo;
+    const domicilio = agDomicilioAtivo;
+
+    const cliente2 = (duplo && !domicilio) ? document.getElementById("agCliente2").value.trim() : "";
+    const tipoId2  = (duplo && !domicilio) ? document.getElementById("agTipo2").value : "";
+    const duracao2 = (duplo && !domicilio) ? document.getElementById("agDuracao2").value : "";
+
+    const fer = feriadoNaData(currentDayKey);
+    if(fer){
+      const tipo = fer.tipo === "nacional" ? "feriado nacional" : "feriado";
+      const msg = "⚠ " + formatDateBR(currentDayKey) + " é " + tipo + ":\n\n" +
+                  fer.nome + "\n\n" +
+                  "Deseja continuar mesmo assim?";
+      if(!confirm(msg)) return;
+    }
+
+    const ag = {
+      id: state.editingAgId || uid(),
+      hora, cliente, telefone, tipoId, obs,
+      duplo: duplo,
+      duracao: duracao ? Number(duracao) : null,
+      cliente2: cliente2 || "",
+      tipoId2:  tipoId2 || "",
+      duracao2: duracao2 ? Number(duracao2) : null,
+      domicilio: domicilio
+    };
+
+    if(!state.agenda[currentDayKey]) state.agenda[currentDayKey] = [];
+
+    if(state.editingAgId){
+      const list = state.agenda[currentDayKey];
+      const idx = list.findIndex(a => a.id === state.editingAgId);
+      if(idx >= 0) list[idx] = ag;
+    } else {
+      state.agenda[currentDayKey].push(ag);
+    }
+
+    saveAgenda();
+    closeOverlay("overlayAg");
+    renderGrid();
+  });
+
+  document.getElementById("btnDeleteAg").addEventListener("click", () => {
+    if(!state.editingAgId) return;
+    if(!confirm("Excluir este agendamento?")) return;
+    const list = state.agenda[currentDayKey] || [];
+    state.agenda[currentDayKey] = list.filter(a => a.id !== state.editingAgId);
+    saveAgenda();
+    closeOverlay("overlayAg");
+    renderGrid();
+  });
+
+  /* =========================================================
+     FÉRIAS
+     ========================================================= */
+  function openFeriasForm(feriasId){
+    state.editingFeriasId = feriasId || null;
+    const isEdit = !!feriasId;
+
+    document.getElementById("feriasTitle").textContent = isEdit ? "Editar férias" : "Marcar férias";
+    document.getElementById("btnDeleteFerias").style.display = isEdit ? "block" : "none";
+
+    const listWrap = document.getElementById("feriasListWrap");
+    listWrap.innerHTML = "";
+    if(state.ferias.length > 0){
+      const title = document.createElement("div");
+      title.style.cssText = "font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;";
+      title.textContent = "Períodos cadastrados";
+      listWrap.appendChild(title);
+
+      const sorted = state.ferias.slice().sort((a,b) => a.inicio.localeCompare(b.inicio));
+      sorted.forEach(f => {
+        const el = document.createElement("div");
+        el.className = "vacation-list-item";
+        const ini = formatDateBR(f.inicio);
+        const fim = formatDateBR(f.fim || f.inicio);
+        const sub = (f.fim && f.fim !== f.inicio) ? (ini + " até " + fim) : ini;
+        el.innerHTML =
+          '<div class="vl-info">' +
+            '<div class="vl-title">🏖️ Período de férias</div>' +
+            '<div class="vl-sub">' + escapeHtml(sub) + '</div>' +
+          '</div>';
+        el.addEventListener("click", () => openFeriasForm(f.id));
+        listWrap.appendChild(el);
+      });
+
+      const hr = document.createElement("div");
+      hr.style.cssText = "height:1px;background:var(--border);margin:12px 0;";
+      listWrap.appendChild(hr);
+    }
+
+    if(isEdit){
+      const f = state.ferias.find(x => x.id === feriasId);
+      if(f){
+        document.getElementById("feriasInicio").value = f.inicio || "";
+        document.getElementById("feriasFim").value    = f.fim || "";
+      }
+    } else {
+      document.getElementById("feriasInicio").value = currentDayKey || "";
+      document.getElementById("feriasFim").value    = "";
+    }
+
+    openOverlay("overlayFerias");
+  }
+
+  document.getElementById("btnSaveFerias").addEventListener("click", () => {
+    const inicio = document.getElementById("feriasInicio").value;
+    const fim    = document.getElementById("feriasFim").value;
+
+    if(!inicio){
+      alert("Informe a data inicial.");
+      return;
+    }
+
+    let fimFinal = fim || inicio;
+    if(fimFinal < inicio){
+      alert("A data final não pode ser anterior à data inicial.");
+      return;
+    }
+
+    if(state.editingFeriasId){
+      const idx = state.ferias.findIndex(x => x.id === state.editingFeriasId);
+      if(idx >= 0){
+        state.ferias[idx] = { id: state.editingFeriasId, inicio, fim: fimFinal };
+      }
+    } else {
+      state.ferias.push({ id: uid(), inicio, fim: fimFinal });
+    }
+
+    saveFerias();
+    closeOverlay("overlayFerias");
+    renderGrid();
+  });
+
+  document.getElementById("btnDeleteFerias").addEventListener("click", () => {
+    if(!state.editingFeriasId) return;
+    if(!confirm("Remover este período de férias?")) return;
+    state.ferias = state.ferias.filter(x => x.id !== state.editingFeriasId);
+    saveFerias();
+    closeOverlay("overlayFerias");
+    renderGrid();
+  });
+
+  /* =========================================================
+     BACKUP
+     ========================================================= */
+  document.getElementById("btnBackupFloat").addEventListener("click", () => {
+    atualizarToggleTema();
+    openOverlay("overlayBackup");
+  });
+
+  document.getElementById("btnExportar").addEventListener("click", () => {
+    const dados = {
+      versao: 5,
+      exportadoEm: new Date().toISOString(),
+      tipos:  state.tipos,
+      agenda: state.agenda,
+      ferias: state.ferias,
+      folgas: state.folgas,
+      feriados_custom: state.feriadosCustom,
+      config_domicilio: state.configDomicilio,
+      whatsapp: {
+        backendUrl: state.whatsapp.backendUrl,
+        ativo: state.whatsapp.ativo,
+        templateName: state.whatsapp.templateName,
+        languageCode: state.whatsapp.languageCode
+      }
+    };
+
+    const agora = new Date();
+    const dataArq = agora.getFullYear() + "-" +
+                    pad(agora.getMonth()+1) + "-" +
+                    pad(agora.getDate());
+    const nome = "mila_nails_backup_" + dataArq + ".json";
+
+    const blob = new Blob([JSON.stringify(dados, null, 2)],
+                          {type: "application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = nome;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+
+    closeOverlay("overlayBackup");
+    alert("Backup gerado: " + nome);
+  });
+
+  document.getElementById("btnImportar").addEventListener("click", () => {
+    document.getElementById("inputImport").click();
+  });
+
+  document.getElementById("inputImport").addEventListener("change", e => {
+    const file = e.target.files && e.target.files[0];
+    e.target.value = "";
+    if(!file) return;
+
+    const reader = new FileReader();
+    reader.onload = ev => {
+      try{
+        const dados = JSON.parse(ev.target.result);
+        if(!dados || typeof dados !== "object" ||
+           !Array.isArray(dados.tipos) ||
+           typeof dados.agenda !== "object" ||
+           !Array.isArray(dados.ferias)){
+          alert("Arquivo inválido. Selecione um backup gerado pelo app.");
+          return;
+        }
+
+        const ok = confirm(
+          "Substituir TODOS os dados atuais pelos do backup?\n\n" +
+          "• Tipos: " + dados.tipos.length + "\n" +
+          "• Dias com agendamento: " + Object.keys(dados.agenda).length + "\n" +
+          "• Períodos de férias: " + dados.ferias.length + "\n\n" +
+          "Esta ação NÃO pode ser desfeita."
+        );
+        if(!ok) return;
+
+        state.tipos  = dados.tipos;
+        state.agenda = dados.agenda;
+        state.ferias = dados.ferias;
+
+        state.folgas = {};
+        if(Array.isArray(dados.folgas)){
+          dados.folgas.forEach(k => { state.folgas[k] = "dia-todo"; });
+        } else if(dados.folgas && typeof dados.folgas === "object"){
+          state.folgas = dados.folgas;
+        }
+
+        state.feriadosCustom = Array.isArray(dados.feriados_custom) ? dados.feriados_custom : [];
+
+        if(dados.config_domicilio && typeof dados.config_domicilio === "object"){
+          state.configDomicilio = {
+            taxa: (typeof dados.config_domicilio.taxa === "number" && dados.config_domicilio.taxa >= 0)
+                    ? dados.config_domicilio.taxa : CONFIG_DOM_PADRAO.taxa,
+            duracao: (typeof dados.config_domicilio.duracao === "number" && dados.config_domicilio.duracao > 0)
+                    ? dados.config_domicilio.duracao : CONFIG_DOM_PADRAO.duracao
+          };
+        } else {
+          state.configDomicilio = { ...CONFIG_DOM_PADRAO };
+        }
+
+        saveTipos();
+        saveAgenda();
+        saveFerias();
+        saveFolgas();
+        saveFeriadosCustom();
+        saveConfigDomicilio();
+
+        closeOverlay("overlayBackup");
+        renderGrid();
+        alert("Backup restaurado com sucesso!");
+      }catch(err){
+        alert("Erro ao ler o arquivo: " + err.message);
+      }
+    };
+    reader.readAsText(file);
+  });
+
+  /* =========================================================
+     CONFIG: MENU PRINCIPAL
+     ========================================================= */
+  document.getElementById("btnConfig").addEventListener("click", () => {
+    openOverlay("overlayConfig");
+  });
+
+  document.getElementById("cfgBtnTipos").addEventListener("click", () => {
+    closeOverlay("overlayConfig");
+    openTipos();
+  });
+
+  document.getElementById("cfgBtnFeriados").addEventListener("click", () => {
+    closeOverlay("overlayConfig");
+    openFeriados();
+  });
+
+  document.getElementById("cfgBtnDomicilio").addEventListener("click", () => {
+    closeOverlay("overlayConfig");
+    document.getElementById("cfgTaxaDomicilio").value =
+      Number(state.configDomicilio.taxa).toFixed(2);
+    document.getElementById("cfgDuracaoDomicilio").value =
+      state.configDomicilio.duracao;
+    openOverlay("overlayDomicilio");
+  });
+
+  document.getElementById("cfgTaxaDomicilio").addEventListener("input", e => {
+    let v = parseFloat(e.target.value);
+    if(!isFinite(v) || v < 0) v = 0;
+    state.configDomicilio.taxa = v;
+    saveConfigDomicilio();
+  });
+  document.getElementById("cfgDuracaoDomicilio").addEventListener("input", e => {
+    let v = parseInt(e.target.value, 10);
+    if(!isFinite(v) || v <= 0) v = CONFIG_DOM_PADRAO.duracao;
+    state.configDomicilio.duracao = v;
+    saveConfigDomicilio();
+  });
+
+  /* =========================================================
+     WHATSAPP — configuração
+     ========================================================= */
+  function atualizarBotaoWhatsappFloat(){
+    const btn = document.getElementById("btnWhatsappFloat");
+    if(!btn) return;
+    const ok = state.whatsapp.ativo
+      && state.whatsapp.backendUrl
+      && state.whatsapp.apiKey;
+    btn.style.display = ok ? "flex" : "none";
+  }
+
+  function abrirWhatsappConfig(){
+    document.getElementById("waBackendUrl").value   = state.whatsapp.backendUrl || "";
+    document.getElementById("waApiKey").value       = state.whatsapp.apiKey || "";
+    document.getElementById("waAtivo").checked      = !!state.whatsapp.ativo;
+    document.getElementById("waTemplateName").value = state.whatsapp.templateName || "confirmacao_agendamento";
+    document.getElementById("waLanguageCode").value = state.whatsapp.languageCode || "pt_BR";
+
+    const statusEl = document.getElementById("waStatus");
+    if(state.whatsapp.backendUrl && state.whatsapp.apiKey){
+      statusEl.innerHTML = "✅ Configuração salva. URL: <strong>" +
+        escapeHtml(state.whatsapp.backendUrl) + "</strong>";
+    } else {
+      statusEl.textContent = "Preencha a URL do backend e a API Key para ativar.";
+    }
+
+    openOverlay("overlayWhatsapp");
+  }
+
+  document.getElementById("cfgBtnWhatsapp").addEventListener("click", () => {
+    closeOverlay("overlayConfig");
+    abrirWhatsappConfig();
+  });
+
+  document.getElementById("btnWaSalvar").addEventListener("click", () => {
+    const url  = document.getElementById("waBackendUrl").value.trim();
+    const key  = document.getElementById("waApiKey").value.trim();
+    const ativ = document.getElementById("waAtivo").checked;
+    const tpl  = document.getElementById("waTemplateName").value.trim() || "confirmacao_agendamento";
+    const lang = document.getElementById("waLanguageCode").value.trim() || "pt_BR";
+
+    if(ativ && (!url || !key)){
+      alert("Para ativar, preencha a URL do backend e a API Key.");
+      return;
+    }
+
+    if(url && !/^https?:\/\//i.test(url)){
+      alert("A URL do backend deve começar com http:// ou https://");
+      return;
+    }
+
+    state.whatsapp = {
+      backendUrl: url.replace(/\/+$/, ""),
+      apiKey: key,
+      ativo: ativ,
+      templateName: tpl,
+      languageCode: lang
+    };
+
+    saveWhatsapp();
+    atualizarBotaoWhatsappFloat();
+    closeOverlay("overlayWhatsapp");
+    alert("Configuração do WhatsApp salva.");
+  });
+
+  document.getElementById("btnWhatsappFloat").addEventListener("click", () => {
+    abrirLembretes();
+  });
+
+  /* =========================================================
+     WHATSAPP — lembretes de amanhã
+     ========================================================= */
+  function dataAmanhaKey(){
+    const d = new Date();
+    d.setDate(d.getDate() + 1);
+    return dateKey(d.getFullYear(), d.getMonth(), d.getDate());
+  }
+
+  function abrirLembretes(){
+    const dataKey = dataAmanhaKey();
+    document.getElementById("lembretesTitle").textContent =
+      "Lembretes de " + formatDateLong(dataKey);
+    document.getElementById("lembretesResultado").innerHTML = "";
+    renderLembretesPreview(dataKey);
+    openOverlay("overlayLembretes");
+  }
+
+  function renderLembretesPreview(dataKey){
+    const body = document.getElementById("lembretesBody");
+    body.innerHTML = "";
+
+    const fer   = feriadoNaData(dataKey);
+    const fer2  = feriasNaData(dataKey);
+    const folga = folgaNaData(dataKey);
+
+    if(fer){
+      const el = document.createElement("div");
+      el.className = "feriado-banner";
+      el.innerHTML = '<span class="fb-icon">' + (fer.tipo === "nacional" ? "🇧🇷" : "🎉") + '</span><span>' +
+        escapeHtml(fer.nome) + ' — o backend vai recusar o envio neste dia.</span>';
+      body.appendChild(el);
+    }
+    if(fer2){
+      const el = document.createElement("div");
+      el.className = "vacation-banner";
+      el.innerHTML = '<div class="vb-text">🏖️ Período de férias — o backend vai recusar o envio.</div>';
+      body.appendChild(el);
+    }
+    if(folga){
+      const el = document.createElement("div");
+      el.className = "folga-banner";
+      el.innerHTML = '<span class="fb-icon">🛌</span><span>Folga marcada (' + escapeHtml(folga) + ') — o backend vai recusar o envio.</span>';
+      body.appendChild(el);
+    }
+
+    const ags = (state.agenda[dataKey] || []).slice();
+    if(ags.length === 0){
+      const el = document.createElement("div");
+      el.className = "empty-msg";
+      el.textContent = "Nenhum agendamento para este dia.";
+      body.appendChild(el);
+      return;
+    }
+
+    ags.sort((a,b) => (a.hora || "99:99").localeCompare(b.hora || "99:99"));
+
+    ags.forEach(ag => {
+      const tipo = getTipo(ag.tipoId);
+      const nomeTipo = tipo ? tipo.nome : "Sem tipo";
+      const tel = ag.telefone ? escapeHtml(ag.telefone) : "<em>sem telefone</em>";
+
+      const el = document.createElement("div");
+      el.className = "ag-item";
+      el.style.borderLeftColor = tipo ? tipo.cor : "#bdbdbd";
+
+      el.innerHTML =
+        '<div class="ag-head">' +
+          '<div class="ag-hora">' + escapeHtml(ag.hora || "--:--") + '</div>' +
+          '<div class="ag-cliente">' + escapeHtml(ag.cliente || "(sem nome)") + '</div>' +
+        '</div>' +
+        '<div class="ag-tipo">' + escapeHtml(nomeTipo) + '</div>' +
+        '<div class="ag-obs">📞 ' + tel + '</div>';
+
+      body.appendChild(el);
+    });
+  }
+
+  /* =========================================================
+     WHATSAPP — envio via backend Render
+     ========================================================= */
+  document.getElementById("btnEnviarLembretes").addEventListener("click", async () => {
+    const cfg = state.whatsapp;
+    if(!cfg.ativo || !cfg.backendUrl || !cfg.apiKey){
+      alert("Configure o WhatsApp antes de enviar.");
+      return;
+    }
+
+    const dataKey = dataAmanhaKey();
+    const ags = state.agenda[dataKey] || [];
+    if(ags.length === 0){
+      alert("Não há agendamentos para amanhã.");
+      return;
+    }
+
+    const btn = document.getElementById("btnEnviarLembretes");
+    const res = document.getElementById("lembretesResultado");
+    btn.disabled = true;
+    btn.textContent = "⏳ Enviando...";
+    res.innerHTML = '<div class="busca-resultado">Contatando o backend...</div>';
+
+    const payload = {
+      dataKey: dataKey,
+      agenda: state.agenda,
+      tipos: state.tipos,
+      ferias: state.ferias,
+      folgas: state.folgas,
+      feriados_custom: state.feriadosCustom,
+      config_domicilio: state.configDomicilio,
+      templateName: cfg.templateName,
+      languageCode: cfg.languageCode
+    };
+
+    try{
+      const resp = await fetch(cfg.backendUrl + "/send-reminders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": cfg.apiKey
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await resp.json().catch(() => ({}));
+
+      if(!resp.ok){
+        res.innerHTML =
+          '<div class="feriado-banner">' +
+            '<span class="fb-icon">⚠️</span>' +
+            '<span>Erro ' + resp.status + ': ' + escapeHtml(data.error || "falha no backend") + '</span>' +
+          '</div>';
+        return;
+      }
+
+      const enviados = data.enviados || 0;
+      const ignorados = data.ignorados || 0;
+      let html = '<div class="config-secao" style="margin-top:12px;">';
+      html += '<div class="config-titulo">📊 Resultado</div>';
+      html += '<div style="font-size:14px;margin-bottom:8px;">';
+      html += '✅ Enviados: <strong>' + enviados + '</strong><br>';
+      html += '⏭️ Ignorados: <strong>' + ignorados + '</strong>';
+      if(data.motivo) html += '<br><em>' + escapeHtml(data.motivo) + '</em>';
+      html += '</div>';
+
+      if(Array.isArray(data.resultados) && data.resultados.length > 0){
+        html += '<div style="font-size:12px;color:var(--muted);max-height:180px;overflow-y:auto;">';
+        data.resultados.forEach(r => {
+          const status = r.status === "enviado" ? "✅" : (r.status === "ignorado" ? "⏭️" : "❌");
+          html += '<div class="wa-resultado-item">' +
+            status + ' ' + escapeHtml(r.cliente || "") +
+            (r.motivo ? ' — <em>' + escapeHtml(r.motivo) + '</em>' : '') +
+          '</div>';
+        });
+        html += '</div>';
+      }
+
+      html += '</div>';
+      res.innerHTML = html;
+
+    }catch(err){
+      res.innerHTML =
+        '<div class="feriado-banner">' +
+          '<span class="fb-icon">⚠️</span>' +
+          '<span>Erro de rede: ' + escapeHtml(err.message) + '</span>' +
+        '</div>';
+    }finally{
+      btn.disabled = false;
+      btn.textContent = "📲 Enviar lembretes";
+    }
+  });
+
+  /* =========================================================
+     TIPOS
+     ========================================================= */
+  function openTipos(){
+    renderTiposList();
+    openOverlay("overlayTipos");
+  }
+
+  function renderTiposList(){
+    const body = document.getElementById("tiposBody");
+    body.innerHTML = "";
+
+    if(state.tipos.length === 0){
+      body.innerHTML = '<div class="empty-msg">Nenhum tipo cadastrado ainda.<br>Toque em "+ Novo tipo" para começar.</div>';
+      return;
+    }
+
+    state.tipos.forEach(t => {
+      const el = document.createElement("div");
+      el.className = "tipo-item";
+
+      const meta = [];
+      if(t.preco !== undefined && t.preco !== null && t.preco !== "") meta.push("R$ " + Number(t.preco).toFixed(2).replace(".",","));
+      if(t.duracao) meta.push(t.duracao + " min");
+
+      el.innerHTML =
+        '<div class="tipo-cor" style="background:' + t.cor + '"></div>' +
+        '<div class="tipo-info">' +
+          '<div class="tipo-nome">' + escapeHtml(t.nome || "(sem nome)") + '</div>' +
+          (meta.length ? '<div class="tipo-meta">' + escapeHtml(meta.join(" · ")) + '</div>' : '') +
+        '</div>';
+
+      el.addEventListener("click", () => openTipoForm(t.id));
+      body.appendChild(el);
+    });
+  }
+
+  function renderColorGrid(){
+    const grid = document.getElementById("colorGrid");
+    grid.innerHTML = "";
+
+    PRESET_COLORS.forEach(c => {
+      const sw = document.createElement("div");
+      sw.className = "color-swatch" + (c === state.selectedColor ? " selected" : "");
+      sw.style.background = c;
+      sw.addEventListener("click", () => {
+        state.selectedColor = c;
+        renderColorGrid();
+      });
+      grid.appendChild(sw);
+    });
+
+    const custom = document.createElement("div");
+    custom.className = "color-swatch custom";
+    custom.textContent = "+";
+    custom.title = "Escolher cor personalizada";
+    custom.addEventListener("click", () => {
+      const input = document.createElement("input");
+      input.type = "color";
+      input.value = state.selectedColor || "#7b1e3a";
+      input.addEventListener("input", e => {
+        state.selectedColor = e.target.value;
+        renderColorGrid();
+      });
+      input.click();
+    });
+    grid.appendChild(custom);
+  }
+
+  function openTipoForm(tipoId){
+    state.editingTipoId = tipoId || null;
+    const isEdit = !!tipoId;
+
+    document.getElementById("tipoTitle").textContent = isEdit ? "Editar tipo" : "Novo tipo";
+    document.getElementById("btnDeleteTipo").style.display = isEdit ? "block" : "none";
+
+    if(isEdit){
+      const t = getTipo(tipoId);
+      if(t){
+        document.getElementById("tipoNome").value    = t.nome || "";
+        document.getElementById("tipoPreco").value   = t.preco || "";
+        document.getElementById("tipoDuracao").value = t.duracao || "";
+        state.selectedColor = t.cor || PRESET_COLORS[0];
+      }
+    } else {
+      document.getElementById("tipoNome").value    = "";
+      document.getElementById("tipoPreco").value   = "";
+      document.getElementById("tipoDuracao").value = "";
+      state.selectedColor = PRESET_COLORS[state.tipos.length % PRESET_COLORS.length];
+    }
+
+    renderColorGrid();
+    openOverlay("overlayTipo");
+  }
+
+  document.getElementById("btnAddTipo").addEventListener("click", () => openTipoForm(null));
+
+  document.getElementById("btnSaveTipo").addEventListener("click", () => {
+    const nome    = document.getElementById("tipoNome").value.trim();
+    const preco   = document.getElementById("tipoPreco").value;
+    const duracao = document.getElementById("tipoDuracao").value;
+
+    if(!nome){
+      alert("Digite um nome para o tipo.");
+      return;
+    }
+
+    const tipo = {
+      id: state.editingTipoId || uid(),
+      nome,
+      cor: state.selectedColor || PRESET_COLORS[0],
+      preco: preco === "" ? null : Number(preco),
+      duracao: duracao === "" ? null : Number(duracao)
+    };
+
+    if(state.editingTipoId){
+      const idx = state.tipos.findIndex(t => t.id === state.editingTipoId);
+      if(idx >= 0) state.tipos[idx] = tipo;
+    } else {
+      state.tipos.push(tipo);
+    }
+
+    saveTipos();
+    closeOverlay("overlayTipo");
+    renderTiposList();
+    renderGrid();
+  });
+
+  document.getElementById("btnDeleteTipo").addEventListener("click", () => {
+    if(!state.editingTipoId) return;
+
+    const hoje = todayKey();
+    let count = 0;
+    Object.keys(state.agenda).forEach(k => {
+      if(k >= hoje){
+        (state.agenda[k] || []).forEach(a => {
+          if(a.tipoId === state.editingTipoId) count++;
+          if(a.duplo && a.tipoId2 === state.editingTipoId) count++;
+        });
+      }
+    });
+
+    if(count > 0){
+      alert("Não é possível excluir: este tipo está em uso em " + count + " agendamento(s) futuro(s).");
+      return;
+    }
+
+    if(!confirm("Excluir este tipo?")) return;
+
+    state.tipos = state.tipos.filter(t => t.id !== state.editingTipoId);
+    saveTipos();
+    closeOverlay("overlayTipo");
+    renderTiposList();
+    renderGrid();
+  });
+
+  /* =========================================================
+     FERIADOS
+     ========================================================= */
+  function openFeriados(){
+    renderFeriadosNacionais();
+    renderFeriadosCustom();
+    openOverlay("overlayFeriados");
+  }
+
+  function renderFeriadosNacionais(){
+    const el = document.getElementById("feriadosNacionaisBody");
+    const sorted = FERIADOS_NACIONAIS.slice().sort((a,b) => (a.mes-b.mes) || (a.dia-b.dia));
+    el.innerHTML = sorted.map(f =>
+      '<div style="padding:3px 0;">' + pad(f.dia) + "/" + pad(f.mes) + " — " + escapeHtml(f.nome) + '</div>'
+    ).join("");
+  }
+
+  function renderFeriadosCustom(){
+    const body = document.getElementById("feriadosBody");
+    body.innerHTML = "";
+
+    if(state.feriadosCustom.length === 0){
+      body.innerHTML = '<div class="empty-msg">Nenhum feriado cadastrado ainda.<br>Toque em "+ Novo feriado" para começar.</div>';
+      return;
+    }
+
+    const sorted = state.feriadosCustom.slice().sort((a,b) => (a.mes-b.mes) || (a.dia-b.dia));
+    sorted.forEach(f => {
+      const el = document.createElement("div");
+      el.className = "feriado-item";
+
+      const meta = f.anual ? "Anual (repete todo ano)" : ("Somente " + (f.ano || "—"));
+
+      el.innerHTML =
+        '<div class="feriado-cor">' + pad(f.dia) + '/' + pad(f.mes) + '</div>' +
+        '<div class="feriado-info">' +
+          '<div class="feriado-nome">' + escapeHtml(f.nome || "(sem nome)") + '</div>' +
+          '<div class="feriado-meta">' + escapeHtml(meta) + '</div>' +
+        '</div>';
+
+      el.addEventListener("click", () => openFeriadoForm(f.id));
+      body.appendChild(el);
+    });
+  }
+
+  function openFeriadoForm(feriadoId){
+    state.editingFeriadoId = feriadoId || null;
+    const isEdit = !!feriadoId;
+
+    document.getElementById("feriadoTitle").textContent = isEdit ? "Editar feriado" : "Novo feriado";
+    document.getElementById("btnDeleteFeriado").style.display = isEdit ? "block" : "none";
+
+    if(isEdit){
+      const f = state.feriadosCustom.find(x => x.id === feriadoId);
+      if(f){
+        document.getElementById("feriadoNome").value = f.nome || "";
+        document.getElementById("feriadoDia").value  = f.dia || "";
+        document.getElementById("feriadoMes").value  = f.mes || 1;
+        document.getElementById("feriadoAnual").checked = !!f.anual;
+      }
+    } else {
+      document.getElementById("feriadoNome").value = "";
+      document.getElementById("feriadoDia").value  = "";
+      document.getElementById("feriadoMes").value  = new Date().getMonth() + 1;
+      document.getElementById("feriadoAnual").checked = false;
+    }
+
+    openOverlay("overlayFeriado");
+  }
+
+  document.getElementById("btnAddFeriado").addEventListener("click", () => openFeriadoForm(null));
+
+  document.getElementById("btnSaveFeriado").addEventListener("click", () => {
+    const nome  = document.getElementById("feriadoNome").value.trim();
+    const dia   = parseInt(document.getElementById("feriadoDia").value, 10);
+    const mes   = parseInt(document.getElementById("feriadoMes").value, 10);
+    const anual = document.getElementById("feriadoAnual").checked;
+
+    if(!nome){
+      alert("Digite um nome para o feriado.");
+      return;
+    }
+    if(!dia || dia < 1 || dia > 31){
+      alert("Informe um dia válido (1 a 31).");
+      return;
+    }
+
+    const anoAtual = new Date().getFullYear();
+    const feriado = {
+      id: state.editingFeriadoId || uid(),
+      nome,
+      dia,
+      mes,
+      anual: !!anual,
+      ano: anual ? null : anoAtual
+    };
+
+    if(state.editingFeriadoId){
+      const idx = state.feriadosCustom.findIndex(x => x.id === state.editingFeriadoId);
+      if(idx >= 0) state.feriadosCustom[idx] = feriado;
+    } else {
+      state.feriadosCustom.push(feriado);
+    }
+
+    saveFeriadosCustom();
+    closeOverlay("overlayFeriado");
+    renderFeriadosCustom();
+    renderGrid();
+  });
+
+  document.getElementById("btnDeleteFeriado").addEventListener("click", () => {
+    if(!state.editingFeriadoId) return;
+    if(!confirm("Excluir este feriado?")) return;
+    state.feriadosCustom = state.feriadosCustom.filter(x => x.id !== state.editingFeriadoId);
+    saveFeriadosCustom();
+    closeOverlay("overlayFeriado");
+    renderFeriadosCustom();
+    renderGrid();
+  });
+
+  /* =========================================================
+     SELETOR DE MÊS
+     ========================================================= */
+  function openMonthPicker(){
+    state.pickerYear = state.viewYear;
+    renderMonthPicker();
+    openOverlay("overlayMonth");
+  }
+
+  function renderMonthPicker(){
+    document.getElementById("yearLabel").textContent = state.pickerYear;
+
+    const grid = document.getElementById("monthGrid");
+    grid.innerHTML = "";
+
+    MONTHS.forEach((name, idx) => {
+      const b = document.createElement("button");
+      b.className = "month-btn";
+      b.textContent = name;
+      if(state.pickerYear === state.viewYear && idx === state.viewMonth){
+        b.classList.add("current");
+      }
+      b.addEventListener("click", () => {
+        state.viewYear  = state.pickerYear;
+        state.viewMonth = idx;
+        renderMonthLabel();
+        renderGrid();
+        closeOverlay("overlayMonth");
+      });
+      grid.appendChild(b);
+    });
+  }
+
+  document.getElementById("yearPrev").addEventListener("click", () => {
+    state.pickerYear--; renderMonthPicker();
+  });
+  document.getElementById("yearNext").addEventListener("click", () => {
+    state.pickerYear++; renderMonthPicker();
+  });
+
+  /* =========================================================
+     NAVEGAÇÃO PRINCIPAL
+     ========================================================= */
+  function irMesAnterior(){
+    state.viewMonth--;
+    if(state.viewMonth < 0){ state.viewMonth = 11; state.viewYear--; }
+    renderMonthLabel();
+    renderGrid();
+  }
+  function irProximoMes(){
+    state.viewMonth++;
+    if(state.viewMonth > 11){ state.viewMonth = 0; state.viewYear++; }
+    renderMonthLabel();
+    renderGrid();
+  }
+
+  document.getElementById("btnPrev").addEventListener("click", irMesAnterior);
+  document.getElementById("btnNext").addEventListener("click", irProximoMes);
+  document.getElementById("btnMonthPicker").addEventListener("click", openMonthPicker);
+
+  /* =========================================================
+     SWIPE
+     ========================================================= */
+  (function configurarSwipe(){
+    const el = document.getElementById("calendarWrap");
+    let startX = 0, startY = 0, startT = 0;
+    let tracking = false;
+
+    el.addEventListener("touchstart", e => {
+      if(algumaOverlayAberta()){ tracking = false; return; }
+      if(e.touches.length !== 1){ tracking = false; return; }
+      tracking = true;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      startT = Date.now();
+    }, {passive:true});
+
+    el.addEventListener("touchend", e => {
+      if(!tracking) return;
+      tracking = false;
+      if(algumaOverlayAberta()) return;
+      if(!e.changedTouches || e.changedTouches.length === 0) return;
+
+      const dx = e.changedTouches[0].clientX - startX;
+      const dy = e.changedTouches[0].clientY - startY;
+      const dt = Date.now() - startT;
+
+      const absX = Math.abs(dx), absY = Math.abs(dy);
+
+      if(absX < 60) return;
+      if(absX < absY * 1.5) return;
+      if(dt > 600) return;
+
+      if(dx < 0) irProximoMes();
+      else       irMesAnterior();
+    }, {passive:true});
+
+    el.addEventListener("touchcancel", () => { tracking = false; }, {passive:true});
+  })();
+
+  /* =========================================================
+     BOOT
+     ========================================================= */
+  function boot(){
+    load();
+    const now = new Date();
+    state.viewYear  = now.getFullYear();
+    state.viewMonth = now.getMonth();
+    renderMonthLabel();
+    renderGrid();
+    atualizarToggleTema();
+    atualizarBotaoWhatsappFloat();
+    setTimeout(mostrarBannerBoasVindas, 400);
+  }
+
+  boot();
+})();
+</script>
+</body>
+</html>
